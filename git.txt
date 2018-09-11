@@ -1,0 +1,28 @@
+git pull 제일 먼저 치기
+
+git status
+
+code 열기 : code .
+
+
+파일 보내기 3단계
+git add 이름
+git commit -m
+git push
+
+mkdir <dir name>
+
+vim .gitignore 치면
+unix 모드가 됨 이상태에서
+a, i o 중에 하나 눌러서 입력모드하고 입력한다으멩 esc 누르면 입력모드 나가고 :wq 누르면 unix 모드 나감
+
+git diff : 변경사항 확인
+git diff -- staged : 스테이지에 있는 파일 변경사항 확인
+
+git remote update : github에 있는 브랜치 연결
+git branch -r : github에 있는 브랜치 보기
+
+git push origin master : github에 업로드
+
+@tutorial
+https://moon9342.github.io/git-github
