@@ -49,7 +49,7 @@
 <!--spring-test -->
 <dependency>
     <groupId>org.springframework</groupId>
-    <artifactId>spring-jdbc</artifactId>
+    <artifactId>spring-test</artifactId>
     <version>${org.springframework-version}</version>
 </dependency>
 
