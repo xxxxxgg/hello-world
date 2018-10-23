@@ -1,4 +1,4 @@
-git pull 제일 먼저 치기
+﻿git pull 제일 먼저 치기
 
 git status
 
@@ -14,7 +14,7 @@ mkdir <dir name>
 
 vim .gitignore 치면
 unix 모드가 됨 이상태에서
-a, i o 중에 하나 눌러서 입력모드하고 입력한다으멩 esc 누르면 입력모드 나가고 :wq 누르면 unix 모드 나감
+a, i o 중에 하나 눌러서 입력모드하고 무시할 파일들 입력한다으멩 esc 누르면 입력모드 나가고 :wq 누르면 unix 모드 나감
 
 git diff : 변경사항 확인
 git diff -- staged : 스테이지에 있는 파일 변경사항 확인
@@ -23,6 +23,12 @@ git remote update : github에 있는 브랜치 연결
 git branch -r : github에 있는 브랜치 보기
 
 git push origin master : github에 업로드
+
+git merge [병합 대상 브랜치] : master에서 git merge tt 하면 tt가 master로 병합됨.
+
+git tag -1 1.0 -m "first release" master : 버전 태그
+
+git rebase -i HEAD~3 : 마지막 3개의 커밋 합치기
 
 @tutorial
 https://moon9342.github.io/git-github
