@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>a</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <script>
+            $(document).ready(function(){
+             $('.slider').bxSlider({
+                 mode: 'horizontal',
+                 auto: true,
+                 autoControls: true,
+                 stopAutoOnClick: true,
+                 pager: true
+             });
+            });
+    </script>
+
+</head>
+<body>
+
+        <div id="wrapper">
+                <header id="header">
+                    <div id="subheader">
+                        <nav class="container">
+                            <!-- <p>The Village</p> -->
+                            <a href="https://www.myomee.com/main.do" class = "heaer_link">장바구니</a>
+                            <a href="https://www.myomee.com/main.do" class = "heaer_link">마이페이지</a>
+                            <a href="https://www.myomee.com/main.do" class = "heaer_link">회원가입</a>
+                            <a href="https://www.myomee.com/main.do" class = "heaer_link">로그인</a>
+                        <nav>
+                    </div>
+
+                    <!-- main header -->
+                    <div id="main-header">
+                        <!-- logo -->
+                        <div id="logo">
+                            <!-- <span id="ist">The</span><span id="iist">Village</span> -->
+                            <img id = "img_logo" src = "img/logo.png">
+                        </div>
+                        <!-- search area -->
+                        <div id="search">
+                                <form action="">
+                                    <input class="search-area" type="text" name="text" placeholder="원하는 상품을 검색하세요!">
+                                    <input class="search-btn" type="submit" name="submit" value="SEARCH">
+                                </form>
+                        </div>
+                    </div>
+                    
+                </header>
+                <!-- navigation bar -->
+                <div id="navigation">
+                    <nav>
+                        <a href="#">Home</a>
+                        <a href="#">New arrivals</a>
+                        <a href="#">Deals</a>
+                        <a href="#">Electronics</a>
+                        <a href="#">Accessories</a>
+                        <a href="#">Products</a>
+                        <a href="#">Order</a>
+                    </nav>
+                </div>
+        </div>
+
+        <div class="slider">
+
+            <img class="slides" src="img/고화질.jpg">
+            <img class="slides" src="img/고화질2.jpg">
+            <img class="slides" src="img/고화질3.jpg">
+            <img class="slides" src="img/고화질4.jpg">
+        </div>
+
+        <div class="container">
+            <div id="heading-block">
+                <h2>Category</h2>
+            </div>
+            <!-- first box -->
+            <a href="#">
+                <div class="catbox">
+                    <img src="img/유모차1.jpg" alt="Children`s goods">
+                    <span>유/아동</span>
+                </div>
+            </a>
+            <!-- second box -->
+            <a href="#">
+                <div class="catbox">
+                    <img src="img/킥.jpg" alt="Leisure/Hobby">
+                    <span>레저/취미</span>
+                </div>
+            </a>
+            <!-- third box -->
+            <a href="#">
+                <div class="catbox">
+                    <img src="img/패션.jpg" alt="Fashion/Beauty">
+                    <span>패션/뷰티</span>
+                </div>
+            </a>
+            <!-- fourth box -->
+            <a href="#">
+                <div class="catbox">
+                    <img src="img/노트북.jpg" alt="Living">
+                    <span>리빙</span>
+                </div>
+            </a>
+            <!-- fifth box -->
+            <a href="#">
+                <div class="catbox">
+                    <img src="img/펫.jpg" alt="Pet">
+                    <span>반려 동물</span>
+                </div>
+            </a>
+            <!-- sixth box -->
+            <a href="#">
+                <div class="catbox">
+                    <img src="img/중고.jpg" alt="Second-hand sales">
+                    <span>중고 판매관</span>
+                </div>
+            </a>
+            <!-- HEADING OF CATEGORY -->
+            <div id="heading-block">
+                <h2>Products</h2>
+            </div>
+            <div class="prod-container">
+                <!--First product-->
+                <div class="prod-box">
+                    <img src="img/카시트.jpg" alt="Car seat">
+                    <div class="prod-trans">
+                    <div class="prod-feature">
+                        <p>제품명: 카시트</p>
+                        <p>가격: 10000원</p>
+                        <input type="button" value="장바구니 담기">
+                    </div>
+                    </div>
+                </div>
+                
+                <!--Second product-->
+                <div class="prod-box">
+                    <img src="img/냉장고.png" alt="Refrigirator">
+                    <div class="prod-trans">
+                    <div class="prod-feature">
+                        <p>제품명: 냉장고</p>
+                        <p>가격: 10000원</p>
+                        <input type="button" value="장바구니 담기">
+                    </div>
+                    </div>
+                </div>
+                
+                <!--Third product-->
+                <div class="prod-box">
+                    <img src="img/애기옷.jpg" alt="Children’s clothes">
+                    <div class="prod-trans">
+                    <div class="prod-feature">
+                        <p>제품명: 아동복</p>
+                        <p>가격: 10000원</p>
+                        <input type="button" value="장바구니 담기">
+                    </div>
+                    </div>
+                </div>
+
+                <!--Fourth product-->
+                <div class="prod-box">
+                    <img src="img/애견가방.jpg" alt="Pet`s bag">
+                    <div class="prod-trans">
+                    <div class="prod-feature">
+                        <p>제품명: 애견가방</p>
+                        <p>가격: 10000원</p>
+                        <input type="button" value="장바구니 담기">
+                    </div>
+                    </div>
+                </div>
+
+                <!--Fifth product-->
+                <div class="prod-box">
+                    <img src="img/런닝머신.jpg" alt="Running machine">
+                    <div class="prod-trans">
+                    <div class="prod-feature">
+                        <p>제품명: 런닝머신</p>
+                        <p>가격: 10000원</p>
+                        <input type="button" value="장바구니 담기">
+                    </div>
+                    </div>
+                </div>
+
+                <!--Sixth product-->
+                <div class="prod-box">
+                    <img src="img/tv.jpg" alt="Television">
+                    <div class="prod-trans">
+                    <div class="prod-feature">
+                        <p>제품명: Tv</p>
+                        <p>가격: 10000원</p>
+                        <input type="button" value="장바구니 담기">
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+
+        </div>
+
+        </div>
+</body>
+
+</html>
