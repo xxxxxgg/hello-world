@@ -24,6 +24,14 @@
 	<!-- 컨트롤러 패키지만 스캔해야 aop가 스캔충돌을 안함 -->
 	<context:component-scan base-package="com.vil.pjt.controller" />
 	
-	
+	<!-- 관리자 로그인 설정 -->
+	<beans:bean id="adminInterceptor" class="com.vil.pjt.interceptor.AdminInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/doAdminLogin" />
+			<mapping path="/admin/doAdminLogin2" />
+			<beans:ref bean="adminInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>
