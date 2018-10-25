@@ -9,13 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.vil.pjt.HomeController;
 import com.vil.pjt.domain.JsonVO;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/board")
 public class BoardController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String home(Locale locale) {
