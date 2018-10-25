@@ -37,7 +37,9 @@
 </div>
 <hr>
 <div class="admin-nav">nav</div>
+<hr>
 <div class="admin-body">body</div>
+
 <div class="admin-footer">footer</div>
 </body>
 </html>
