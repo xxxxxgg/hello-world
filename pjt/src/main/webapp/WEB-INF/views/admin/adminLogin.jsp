@@ -20,10 +20,37 @@
 	display : inline-block;
 	margin-right : 20px;
 }
+body {
+	vertical-align : middle;
+}
+div {
+	width : 100%;
+	height : 100%;
+	text-align : center;
+	vertical-align : middle;
+}
+div form div .ch {
+	width : 100%;
+	text-align : left;
+}
+div form div .lo {
+	width : 100%;
+	text-align : right;
+}
 </style>
 </head>
 <body>
 <h1>관리자 로그인</h1>
 ${result }
+<div>
+	<form action="adminLoginPost" method="post">
+		<input type="text" name="id" placeholder="관리자 아이디"><br>
+		<input type="password" name="pw" placeholder="비밀번호">
+		<div>
+			<input type="checkbox" id="ch" name="cookie">Remember Me
+			<button type="submit" id="lo">로그인</button>
+		</div>
+	</form>
+</div>
 </body>
 </html>

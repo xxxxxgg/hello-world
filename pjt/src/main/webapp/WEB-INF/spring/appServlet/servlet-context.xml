@@ -28,8 +28,7 @@
 	<beans:bean id="adminInterceptor" class="com.vil.pjt.interceptor.AdminInterceptor"></beans:bean>
 	<interceptors>
 		<interceptor>
-			<mapping path="/admin/doAdminLogin" />
-			<mapping path="/admin/doAdminLogin2" />
+			<mapping path="/admin/adminLoginPost" />
 			<beans:ref bean="adminInterceptor"/>
 		</interceptor>
 	</interceptors>
