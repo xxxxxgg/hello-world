@@ -46,4 +46,9 @@ public class AdminController {
 		
 		model.addAttribute("adminVO", vo);
 	}
+	
+	@RequestMapping(value = "/adminOrder", method = RequestMethod.GET)
+	public void adminOrderGET(Model model) {
+		logger.info("adminOrderGET.......................zz");
+	}
 }

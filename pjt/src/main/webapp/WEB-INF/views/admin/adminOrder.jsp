@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Village Admin Page</title>
+<title>Village Admin Login Page</title>
 <style type="text/css">
 .header-left {
 	display : inline-block;
@@ -21,6 +21,9 @@
 	display : inline-block;
 	margin-right : 20px;
 }
+.admin-nav {
+	border-style : outset;
+}
 .admin-nav ul li {
 	display : inline-block;
 	margin : 0px 20px 0px 20px;
@@ -28,14 +31,15 @@
 </style>
 </head>
 <body>
+<hr>
 <div class="admin-header">
 	<div class="header-left">
 		<h1>Admin Main</h1>
 	</div>
 	<div class="header-right">
 		<ul class="header-rlist">
-			<li class="">mypage</li>
-			<li class="">wishlist</li>
+			<li>${alogin }</li>
+			<li><a href="/admin">메인으로</a></li>
 		</ul>
 	</div>
 </div>
@@ -51,9 +55,8 @@
 <hr>
 <div class="admin-body">
 body
-${alogin }
 </div>
-
+<hr>
 <div class="admin-footer">footer</div>
 </body>
 </html>

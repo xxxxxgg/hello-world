@@ -41,6 +41,7 @@
 		
 		<interceptor>
 			<mapping path="/admin" />
+			<mapping path="/admin/adminOrder" />
 			<beans:ref bean="isAdminInterceptor"/>
 		</interceptor>
 	</interceptors>
