@@ -1,0 +1,43 @@
+CREATE TABLE tb_order
+(
+    `no`               INT              NOT NULL    AUTO_INCREMENT, 
+    `state`            VARCHAR(20)      NOT NULL, 
+    `cno`              INT              NOT NULL    COMMENT '주문자번호', 
+    `orderdate`        VARCHAR(45)      NOT NULL, 
+    `comment`          VARCHAR(1000)    NULL, 
+    `ordered_item_no`  INT              NOT NULL    COMMENT '주문상품', 
+    `totalprice`       INT              NOT NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE tb_order ADD CONSTRAINT FK_tb_order_cno_customer_cno FOREIGN KEY (cno)
+ REFERENCES customer (cno)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+------------------------------------------------------------------------------------
+
+
+CREATE TABLE tb_ordereditem
+(
+    `no`          INT    NOT NULL    COMMENT '주문번호', 
+    `item_no`     INT    NULL        COMMENT '아이템번호', 
+    `count`       INT    NULL        COMMENT '갯수', 
+    `totalprice`  INT    NULL        COMMENT '갯수총합가격', 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE tb_ordereditem ADD CONSTRAINT FK_tb_ordereditem_no_tb_order_ordered_item_no FOREIGN KEY (no)
+ REFERENCES tb_order (ordered_item_no)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-------------------------------------------------------------------------------------
+
+
+CREATE TABLE tb_itemcart
+(
+    `no`          INT    NOT NULL    AUTO_INCREMENT, 
+    `item_no`     INT    NOT NULL, 
+    `count`       INT    NOT NULL, 
+    `totalprice`  INT    NOT NULL, 
+    PRIMARY KEY (no)
+);
