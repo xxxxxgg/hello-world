@@ -8,6 +8,8 @@
 <h1>
 	Hello world!  
 </h1>
-${result }
+<h2>
+	${result}
+</h2>
 </body>
 </html>

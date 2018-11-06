@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>The Village main</title>
+    <title>The Village</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -24,52 +24,16 @@
              });
             });
     </script>
+    
+	<script>
+	function javascript(){
+	    window.location.href="member/register";
+	}
+	</script>
 
 </head>
 <body>
-
-        <div id="wrapper">
-                <header id="header">
-                    <div id="subheader">
-                        <nav class="container">
-                            <!-- <p>The Village</p> -->
-                            <a href="/main" class = "heaer_link">장바구니</a>
-                            <a href="/main" class = "heaer_link">마이페이지</a>
-                            <a href="/main" class = "heaer_link">회원가입</a>
-                            <a href="/main" class = "heaer_link">로그인</a>
-                        <nav>
-                    </div>
-
-                    <!-- main header -->
-                    <div id="main-header">
-                        <!-- logo -->
-                        <div id="logo">
-                            <!-- <span id="ist">The</span><span id="iist">Village</span> -->
-                            <img id = "img_logo" src = "/resources/img/logo.png">
-                        </div>
-                        <!-- search area -->
-                        <div id="search">
-                                <form action="">
-                                    <input class="search-area" type="text" name="text" placeholder="검색어 입력">
-                                    <input class="search-btn" type="submit" name="submit" value="SEARCH">
-                                </form>
-                        </div>
-                    </div>
-                    
-                </header>
-                <!-- navigation bar -->
-                <div id="navigation">
-                    <nav>
-                        <a href="#">Home</a>
-                        <a href="#">New arrivals</a>
-                        <a href="#">Deals</a>
-                        <a href="#">Electronics</a>
-                        <a href="#">Accessories</a>
-                        <a href="#">Products</a>
-                        <a href="#">Order</a>
-                    </nav>
-                </div>
-        </div>
+	<jsp:include page="member/header.jsp"></jsp:include>
 
         <div class="slider">
 
