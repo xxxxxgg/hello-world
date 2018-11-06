@@ -29,14 +29,20 @@
 	</div>
 	<div class="header-right">
 		<ul class="header-rlist">
-			<li class="">login</li>
 			<li class="">mypage</li>
 			<li class="">wishlist</li>
 		</ul>
 	</div>
 </div>
 <hr>
-<div class="admin-nav">nav</div>
+<div class="admin-nav">
+	<ul>
+		<li><a href="/admin/order">주문관리</a></li>
+		<li>결제관리</li>
+		<li>회원관리</li>
+		<li>판매관리</li>
+	</ul>
+</div>
 <hr>
 <div class="admin-body">
 body
