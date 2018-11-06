@@ -22,11 +22,11 @@
 }
 body {
 	vertical-align : middle;
+	text-align : center;
 }
 div {
 	width : 100%;
 	height : 100%;
-	text-align : center;
 	vertical-align : middle;
 }
 div form div .ch {
@@ -43,7 +43,7 @@ div form div .lo {
 <h1>관리자 로그인</h1>
 ${result }
 <div>
-	<form action="adminLoginPost" method="post">
+	<form action="/admin/adminLoginPost" method="post">
 		<input type="text" name="id" placeholder="관리자 아이디"><br>
 		<input type="password" name="pw" placeholder="비밀번호">
 		<div>
@@ -52,5 +52,9 @@ ${result }
 		</div>
 	</form>
 </div>
+${adminVO.id }
+${adminVO.pw }
+${adminVO.name }
+${alogin }
 </body>
 </html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Village Admin Page</title>
+<title>Village Admin Login Page</title>
 <style type="text/css">
 .header-left {
 	display : inline-block;
@@ -20,32 +20,36 @@
 	display : inline-block;
 	margin-right : 20px;
 }
+body {
+	vertical-align : middle;
+	text-align : center;
+}
+div {
+	width : 100%;
+	height : 100%;
+	vertical-align : middle;
+}
+div form div .ch {
+	width : 100%;
+	text-align : left;
+}
+div form div .lo {
+	width : 100%;
+	text-align : right;
+}
 </style>
 </head>
 <body>
-<div class="admin-header">
-	<div class="header-left">
-		<h1>Admin Main</h1>
-	</div>
-	<div class="header-right">
-		<ul class="header-rlist">
-			<li class="">login</li>
-			<li class="">mypage</li>
-			<li class="">wishlist</li>
-		</ul>
-	</div>
-</div>
-<hr>
-<div class="admin-nav">nav</div>
-<hr>
-<div class="admin-body">
-body
-${alogin.id }
-${alogin.pw }
-${adminVO }
-${alogin }
-</div>
+<h1>관리자 로그인</h1>
+${result }
 
-<div class="admin-footer">footer</div>
+${adminVO.id }
+${adminVO.pw }
+${adminVO.name }
+${alogin }
+
+<script type="text/javascript">
+	self.location = "/admin/adminLogin";
+</script>
 </body>
 </html>

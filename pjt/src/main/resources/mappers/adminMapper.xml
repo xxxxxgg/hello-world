@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.vil.pjt.mappers.AdminMapper">
 	<select id="adminLogin" resultType="AdminVO">
-		select id, pw, name
-		from tb_member
+		select *
+		from tb_member2
 		where id = #{id} and pw = #{pw}
 	</select>
 </mapper>

@@ -9,24 +9,24 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class AdminInterceptor extends HandlerInterceptorAdapter {
+public class IsAdminInterceptor extends HandlerInterceptorAdapter {
 	private static final String LOGIN = "alogin";
-	private static final Logger logger = LoggerFactory.getLogger(AdminInterceptor.class);
+	private static final Logger logger = LoggerFactory.getLogger(IsAdminInterceptor.class);
 	
 	@Override
 	public void postHandle(HttpServletRequest req, HttpServletResponse res, Object handler, ModelAndView mav) throws Exception {
-		logger.info("AdminInterceptor post handle..........zz");
+		logger.info("IsAdminInterceptor post handle..........zz");
 	}
 	
 	@Override
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler) throws Exception {
-		logger.info("AdminInterceptor pre handle..........zz");
+		logger.info("IsAdminInterceptor pre handle..........zz");
 		
 		HttpSession session = req.getSession();
 		
-		if (session.getAttribute(LOGIN) != null) {
-			logger.info("current admin is logined");
-			res.sendRedirect("/admin");
+		if (session.getAttribute(LOGIN) == null) {
+			logger.info("current admin is not logined");
+			res.sendRedirect("/admin/adminLogin");
 			return false;
 		}
 		return true;

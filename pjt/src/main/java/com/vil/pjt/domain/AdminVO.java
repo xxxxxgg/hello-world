@@ -7,7 +7,6 @@ public class AdminVO {
 	private String id;
 	private String pw;
 	private String name;
-	private String email;
 	private Date regdate;
 	private Date updatedate;
 	
@@ -35,12 +34,6 @@ public class AdminVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public Date getRegdate() {
 		return regdate;
 	}
@@ -56,7 +49,7 @@ public class AdminVO {
 	
 	@Override
 	public String toString() {
-		return "AdminVO [no=" + no + ", id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", regdate="
+		return "AdminVO [no=" + no + ", id=" + id + ", pw=" + pw + ", name=" + name + ", regdate="
 				+ regdate + ", updatedate=" + updatedate + "]";
 	}
 }

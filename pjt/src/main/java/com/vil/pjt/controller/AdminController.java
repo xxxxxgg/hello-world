@@ -23,8 +23,15 @@ public class AdminController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String adminGET(@ModelAttribute("alogin") AdminVO vo) {
+		logger.info("adminGET.......................zz");
+		
+		return "/admin/adminMain";
+	}
+	
 	@RequestMapping(value = "/adminLogin", method = RequestMethod.GET)
-	public void adminLoginGET(@ModelAttribute("dto") AdminLoginDTO dto) {
+	public void adminLoginGET() {
 		logger.info("adminLoginGET.......................zz");
 	}
 	@RequestMapping(value = "/adminLoginPost", method = RequestMethod.POST)
