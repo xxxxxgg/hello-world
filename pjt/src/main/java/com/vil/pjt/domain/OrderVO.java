@@ -1,14 +1,15 @@
 package com.vil.pjt.domain;
 
+import java.util.Date;
+
 public class OrderVO {
 	private Integer no;
 	private String state;
-	private Integer cno;
-	private String orderdate;
+	private Integer mno;
+	private Date orderdate;
 	private String comment;
-	private Integer orderedItemNo;
 	private Integer totalprice;
-	
+
 	public Integer getNo() {
 		return no;
 	}
@@ -21,16 +22,16 @@ public class OrderVO {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public Integer getCno() {
-		return cno;
+	public Integer getMno() {
+		return mno;
 	}
-	public void setCno(Integer cno) {
-		this.cno = cno;
+	public void setMno(Integer mno) {
+		this.mno = mno;
 	}
-	public String getOrderdate() {
+	public Date getOrderdate() {
 		return orderdate;
 	}
-	public void setOrderdate(String orderdate) {
+	public void setOrderdate(Date orderdate) {
 		this.orderdate = orderdate;
 	}
 	public String getComment() {
@@ -39,22 +40,16 @@ public class OrderVO {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public Integer getOrderedItemNo() {
-		return orderedItemNo;
-	}
-	public void setOrderedItemNo(Integer orderedItemNo) {
-		this.orderedItemNo = orderedItemNo;
-	}
 	public Integer getTotalprice() {
 		return totalprice;
 	}
 	public void setTotalprice(Integer totalprice) {
 		this.totalprice = totalprice;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "OrderVO [no=" + no + ", state=" + state + ", cno=" + cno + ", orderdate=" + orderdate + ", comment="
-				+ comment + ", orderedItemNo=" + orderedItemNo + ", totalprice=" + totalprice + "]";
+		return "OrderVO [no=" + no + ", state=" + state + ", mno=" + mno + ", orderdate=" + orderdate + ", comment="
+				+ comment + ", totalprice=" + totalprice + "]";
 	}
 }

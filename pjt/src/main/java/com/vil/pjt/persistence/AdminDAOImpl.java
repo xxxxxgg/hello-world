@@ -27,5 +27,4 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<OrderVO> adminOrderList() throws Exception {
 		return session.selectList(namespace + ".adminOrderList");
 	}
-
 }
