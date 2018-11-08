@@ -24,7 +24,17 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
+	public OrderVO adminOrderSelect(Integer no) throws Exception {
+		return session.selectOne(namespace + ".adminOrderSelect", no);
+	}
+	@Override
 	public List<OrderVO> adminOrderList() throws Exception {
 		return session.selectList(namespace + ".adminOrderList");
 	}
+
+	@Override
+	public AdminVO adminMemberSelect(Integer no) throws Exception {
+		return session.selectOne(namespace + ".adminMemberSelect", no);
+	}
+
 }

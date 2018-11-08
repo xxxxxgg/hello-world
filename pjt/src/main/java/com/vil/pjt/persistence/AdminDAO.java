@@ -8,5 +8,7 @@ import com.vil.pjt.dto.AdminLoginDTO;
 
 public interface AdminDAO {
 	public AdminVO adminLogin(AdminLoginDTO dto) throws Exception;
+	public OrderVO adminOrderSelect(Integer no) throws Exception;
 	public List<OrderVO> adminOrderList() throws Exception;
+	public AdminVO adminMemberSelect(Integer no) throws Exception;
 }

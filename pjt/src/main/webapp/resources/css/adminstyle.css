@@ -2,7 +2,7 @@
 
 .header-left {
 	display : inline-block;
-	width : 200px;
+	width : 400px;
 	height : 100px;
 	margin : 1em;
 }
@@ -29,12 +29,13 @@ div.blueTable {
   border: 1px solid #1C6EA4;
   background-color: #EEEEEE;
   width: 100%;
-  text-align: left;
+  text-align: center;
   border-collapse: collapse;
 }
 .divTable.blueTable .divTableCell, .divTable.blueTable .divTableHead {
   border: 1px solid #AAAAAA;
   padding: 3px 2px;
+  text-align: center;
 }
 .divTable.blueTable .divTableBody .divTableCell {
   font-size: 13px;

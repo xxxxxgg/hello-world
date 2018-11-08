@@ -6,28 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Village Admin Page</title>
-<style type="text/css">
-.header-left {
-	display : inline-block;
-	width : 200px;
-	height : 100px;
-	margin : 1em;
-}
-.header-right {
-	float : right;
-	margin-top : 40px;
-}
-.header-right ul li {
-	display : inline-block;
-	margin-right : 20px;
-}
-.admin-nav ul li {
-	display : inline-block;
-	margin : 0px 20px 0px 20px;
-}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link href="/resources/css/adminstyle.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 </head>
 <body>
+<hr>
 <div class="admin-header">
 	<div class="header-left">
 		<h1>Admin Main</h1>
@@ -42,10 +31,10 @@
 <hr>
 <div class="admin-nav">
 	<ul>
-		<li><a href="/admin/adminOrder">주문관리</a></li>
-		<li><a href="/admin/order">결제관리</a></li>
-		<li><a href="/admin/order">회원관리</a></li>
-		<li><a href="/admin/order">판매관리</a></li>
+		<li><a href="/admin/order">주문관리</a></li>
+		<li><a href="/admin/payment">결제관리</a></li>
+		<li><a href="/admin/member">회원관리</a></li>
+		<li><a href="/admin/sell">판매관리</a></li>
 	</ul>
 </div>
 <hr>

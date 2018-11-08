@@ -10,8 +10,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where id = #{id} and pw = #{pw}
 	</select>
 	
+	<select id="adminOrderSelect" resultType="OrderVO">
+		select * 
+		from tb_order
+		where no = #{no}
+	</select>
+	
 	<select id="adminOrderList" resultType="OrderVO">
 		select * 
 		from tb_order
+	</select>
+	
+	<select id="adminMemberSelect" resultType="AdminVO">
+		select * 
+		from tb_member2
+		where no = #{mno}
 	</select>
 </mapper>

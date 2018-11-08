@@ -1,6 +1,7 @@
 package com.vil.pjt.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.vil.pjt.domain.AdminVO;
 import com.vil.pjt.domain.OrderVO;
@@ -32,9 +34,11 @@ public class AdminController {
 		return "/admin/adminMain";
 	}
 	
-	@RequestMapping(value = "/adminLogin", method = RequestMethod.GET)
-	public void adminLoginGET() {
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String adminLoginGET() {
 		logger.info("adminLoginGET.......................zz");
+		
+		return "/admin/adminLogin";
 	}
 	@RequestMapping(value = "/adminLoginPost", method = RequestMethod.POST)
 	public void adminLoginPOST(AdminLoginDTO dto, Model model) throws Exception {
@@ -49,12 +53,32 @@ public class AdminController {
 		model.addAttribute("adminVO", vo);
 	}
 	
-	@RequestMapping(value = "/adminOrder", method = RequestMethod.GET)
-	public void adminOrderGET(Model model) throws Exception {
+	@RequestMapping(value = "/order", method = RequestMethod.GET)
+	public String adminOrderGET(Model model) throws Exception {
 		logger.info("adminOrderGET.......................zz");
 		
-		List<OrderVO> vo = service.adminOrderList();
+		model.addAttribute("orderList", service.adminOrderList());
 		
-		model.addAttribute("orderList",vo);
+		return "/admin/order/adminOrder";
+	}
+	@RequestMapping(value = "/order/detail", method = RequestMethod.GET)
+	public String adminOrderDetailGET(@RequestParam("no") Integer no, Model model) throws Exception { // tb_order.no
+		logger.info("adminOrderGET.......................zz");
+		
+		Map<String, Object> param = service.adminOrderDetail(no);
+		
+		//model.addAttribute("orderDetail", service.adminOrderRead());
+		
+		model.addAttribute("orderinfo", param.get("orderinfo"));
+		model.addAttribute("memberinfo", param.get("memberinfo"));
+
+		return "/admin/order/adminOrderDetail";
+	}
+	
+	@RequestMapping(value = "/member", method = RequestMethod.GET)
+	public String adminMemberGET(Model model) throws Exception {
+		logger.info("adminOrderGET.......................zz");
+		
+		return "/admin/adminMember";
 	}
 }

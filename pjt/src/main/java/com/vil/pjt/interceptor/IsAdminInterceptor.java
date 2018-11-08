@@ -26,7 +26,7 @@ public class IsAdminInterceptor extends HandlerInterceptorAdapter {
 		
 		if (session.getAttribute(LOGIN) == null) {
 			logger.info("current admin is not logined");
-			res.sendRedirect("/admin/adminLogin");
+			res.sendRedirect("/admin/login");
 			return false;
 		}
 		return true;

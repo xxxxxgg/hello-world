@@ -33,10 +33,10 @@
 <hr>
 <div class="admin-nav">
 	<ul>
-		<li><a href="/admin/adminOrder">주문관리</a></li>
-		<li><a href="/admin/adminPayment">결제관리</a></li>
-		<li><a href="/admin/adminMember">회원관리</a></li>
-		<li><a href="/admin/orderSell">판매관리</a></li>
+		<li><a href="/admin/order">주문관리</a></li>
+		<li><a href="/admin/payment">결제관리</a></li>
+		<li><a href="/admin/member">회원관리</a></li>
+		<li><a href="/admin/sell">판매관리</a></li>
 	</ul>
 </div>
 
@@ -56,7 +56,7 @@
 	<div class="divTableBody">
 <c:forEach items="${orderList}" var="orderVO">
 	<div class="divTableRow">
-		<div class="divTableCell">${orderVO.no}</div>
+		<div class="divTableCell"><a href="/admin/order/detail?no=${orderVO.no}">${orderVO.no}</a></div>
 		<%-- <div class="divTableCell"><a href='/board/read${pageMaker.makeQuery(pageMaker.pcr.pageNum) }&no=${orderVO.no}'>${orderVO.state}</a></div> --%>
 		<div class="divTableCell">${orderVO.state }</div>
 		<div class="divTableCell">${orderVO.mno}</div>

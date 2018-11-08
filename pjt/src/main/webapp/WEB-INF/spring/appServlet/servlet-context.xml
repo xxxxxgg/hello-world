@@ -35,13 +35,13 @@
 		</interceptor>
 		
 		<interceptor>
-			<mapping path="/admin/adminLogin" />
+			<mapping path="/admin/login" />
 			<beans:ref bean="adminInterceptor"/>
 		</interceptor>
 		
 		<interceptor>
 			<mapping path="/admin" />
-			<mapping path="/admin/adminOrder" />
+			<mapping path="/admin/order" />
 			<beans:ref bean="isAdminInterceptor"/>
 		</interceptor>
 	</interceptors>
