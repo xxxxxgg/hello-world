@@ -18,6 +18,8 @@ import com.vil.pjt.domain.AdminVO;
 import com.vil.pjt.domain.OrderVO;
 import com.vil.pjt.dto.AdminLoginDTO;
 import com.vil.pjt.service.AdminService;
+import com.vli.pjt.framework.paging.PageMaker;
+import com.vli.pjt.framework.paging.SearchCriteria;
 
 @Controller
 @RequestMapping("/admin")
@@ -54,11 +56,17 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
-	public String adminOrderGET(Model model) throws Exception {
+	public String adminOrderGET(@ModelAttribute("scr") SearchCriteria scr, Model model) throws Exception {
 		logger.info("adminOrderGET.......................zz");
 		
-		model.addAttribute("orderList", service.adminOrderList());
+		//model.addAttribute("orderList", service.adminOrderList());
+		model.addAttribute("pageOrder", service.adminOrderList(scr));
 		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setPcr(scr);
+		pageMaker.setTotalCount(service.adminOrderCount(scr));
+		
+		model.addAttribute("pageMaker", pageMaker);
 		return "/admin/order/adminOrder";
 	}
 	@RequestMapping(value = "/order/detail", method = RequestMethod.GET)

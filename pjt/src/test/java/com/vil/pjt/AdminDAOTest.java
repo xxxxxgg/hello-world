@@ -20,12 +20,6 @@ public class AdminDAOTest {
 	@Inject
 	private AdminService service;
 	
-	//@Test
-	public void AdminOrderList() throws Exception {
-		dao.adminOrderList();
-		service.adminOrderList();
-	}
-	
 	@Test
 	public void AdminOrder() throws Exception {
 		OrderVO vo = dao.adminOrderSelect(1);

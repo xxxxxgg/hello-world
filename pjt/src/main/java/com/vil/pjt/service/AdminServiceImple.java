@@ -13,6 +13,7 @@ import com.vil.pjt.domain.AdminVO;
 import com.vil.pjt.domain.OrderVO;
 import com.vil.pjt.dto.AdminLoginDTO;
 import com.vil.pjt.persistence.AdminDAO;
+import com.vli.pjt.framework.paging.SearchCriteria;
 
 @Service
 public class AdminServiceImple implements AdminService {
@@ -25,8 +26,8 @@ public class AdminServiceImple implements AdminService {
 	}
 
 	@Override
-	public List<OrderVO> adminOrderList() throws Exception {
-		return dao.adminOrderList();
+	public List<OrderVO> adminOrderList(SearchCriteria scr) throws Exception {
+		return dao.adminOrderList(scr);
 	}
 
 	@Transactional
@@ -41,6 +42,11 @@ public class AdminServiceImple implements AdminService {
 		param.put("memberinfo", dao.adminMemberSelect(vo.getMno()));
 		
 		return param;
+	}
+
+	@Override
+	public int adminOrderCount(SearchCriteria scr) throws Exception {
+		return dao.adminOrderCount(scr);
 	}
 
 }

@@ -16,9 +16,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where no = #{no}
 	</select>
 	
+	<sql id="adminOrderSearchPage">
+		<if test="searchType != null">
+			<if test="searchType == 'STATE'.toString()">
+				and state like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'MNO'.toString()">
+				and mno like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'TOTALPRICE'.toString()">
+				and totalprice like CONCAT('%', #{keyword}, '%')
+			</if>
+		</if>
+	</sql>
+	
 	<select id="adminOrderList" resultType="OrderVO">
-		select * 
-		from tb_order
+		<![CDATA[
+			select * from tb_order
+			where no > 0			
+		]]>
+		
+		<include refid="adminOrderSearchPage"></include>
+		
+		<![CDATA[			
+			order by bno desc, regdate desc
+			limit ${pageStart}, ${pageSize}
+		]]>
+	</select>
+	<select id="adminOrderCount" resultType="int">
+		<![CDATA[
+			select count(*) 
+			from tb_order
+			where no > 0
+		]]>
+		<include refid="adminOrderSearchPage"></include>
 	</select>
 	
 	<select id="adminMemberSelect" resultType="AdminVO">

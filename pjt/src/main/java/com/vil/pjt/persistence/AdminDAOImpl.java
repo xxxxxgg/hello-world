@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.vil.pjt.domain.AdminVO;
 import com.vil.pjt.domain.OrderVO;
 import com.vil.pjt.dto.AdminLoginDTO;
+import com.vli.pjt.framework.paging.SearchCriteria;
 
 @Repository
 public class AdminDAOImpl implements AdminDAO {
@@ -28,13 +29,18 @@ public class AdminDAOImpl implements AdminDAO {
 		return session.selectOne(namespace + ".adminOrderSelect", no);
 	}
 	@Override
-	public List<OrderVO> adminOrderList() throws Exception {
+	public List<OrderVO> adminOrderList(SearchCriteria scr) throws Exception {
 		return session.selectList(namespace + ".adminOrderList");
 	}
 
 	@Override
 	public AdminVO adminMemberSelect(Integer no) throws Exception {
 		return session.selectOne(namespace + ".adminMemberSelect", no);
+	}
+
+	@Override
+	public int adminOrderCount(SearchCriteria scr) throws Exception {
+		return session.selectOne(namespace + ".adminOrderCount", scr);
 	}
 
 }
