@@ -18,8 +18,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<sql id="adminOrderSearchPage">
 		<if test="searchType != null">
-			<if test="searchType == 'STATE'.toString()">
-				and state like CONCAT('%', #{keyword}, '%')
+			<if test="searchType == 'ORDER_NO'.toString()">
+				and no = #{keyword}
 			</if>
 			<if test="searchType == 'MNO'.toString()">
 				and mno like CONCAT('%', #{keyword}, '%')
@@ -39,8 +39,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="adminOrderSearchPage"></include>
 		
 		<![CDATA[			
-			order by bno desc, regdate desc
-			limit ${pageStart}, ${pageSize}
+			order by no desc, orderdate desc
+			limit #{pageStart}, #{pageSize}
 		]]>
 	</select>
 	<select id="adminOrderCount" resultType="int">
@@ -52,9 +52,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="adminOrderSearchPage"></include>
 	</select>
 	
+	<select id="adminOrderedItemSelect" resultType="OrderedItemVO">
+		<![CDATA[
+			select * from tb_ordereditem
+			where order_no = #{orderNo}
+		]]>
+	</select>
+	<select id="adminOrderedItemList" resultType="OrderedItemVO">
+		<![CDATA[
+			select * from tb_ordereditem
+			where order_no = #{orderNo}
+		]]>
+	</select>
+	
 	<select id="adminMemberSelect" resultType="AdminVO">
 		select * 
 		from tb_member2
 		where no = #{mno}
 	</select>
+	
+	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+														TEST
+		@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+	<insert id="createBoardByBatch" parameterType="map">
+		INSERT INTO tb_order(state, mno, orderdate, comment, totalprice)
+			   VALUES
+			   <foreach item="board" index="index" collection="list" open="" separator="," close="">
+					(#{board.state}, #{board.mno}, NOW(), #{board.comment}, #{board.totalprice})
+			   </foreach>		
+	</insert>
+	<insert id="createBoardByBatch2" parameterType="map">
+		INSERT INTO tb_ordereditem(order_no, item_no, count, totalprice)
+			   VALUES
+			   <foreach item="board" index="index" collection="list" open="" separator="," close="">
+					(#{board.orderNo}, #{board.itemNo}, #{board.count}, #{board.totalprice})
+			   </foreach>		
+	</insert>
 </mapper>

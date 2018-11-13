@@ -2,8 +2,8 @@ package com.vil.pjt.domain;
 
 public class OrderedItemVO {
     private Integer no;
-    private Integer orderNo; 
-    private Integer itemNo;
+    private Integer order_no; 
+    private Integer item_no;
     private Integer count;
     private Integer totalprice;
 
@@ -13,19 +13,19 @@ public class OrderedItemVO {
     public void setNo(Integer no) {
         this.no = no;
     }
-    public Integer getOrderNo() {
-        return orderNo;
-    }
-    public void setTbOrderNo(Integer orderNo) {
-        this.orderNo = orderNo;
-    }
-    public Integer getItemNo() {
-        return itemNo;
-    }
-    public void setItemNo(Integer itemNo) {
-        this.itemNo = itemNo;
-    }
-    public Integer getCount() {
+    public Integer getOrder_no() {
+		return order_no;
+	}
+	public void setOrder_no(Integer order_no) {
+		this.order_no = order_no;
+	}
+	public Integer getItem_no() {
+		return item_no;
+	}
+	public void setItem_no(Integer item_no) {
+		this.item_no = item_no;
+	}
+	public Integer getCount() {
         return count;
     }
     public void setCount(Integer count) {
@@ -40,7 +40,7 @@ public class OrderedItemVO {
     
 	@Override
 	public String toString() {
-		return "OrderedItemVO [no=" + no + ", tbOrderNo=" + orderNo + ", itemNo=" + itemNo + ", count=" + count
+		return "OrderedItemVO [no=" + no + ", orderNo=" + order_no + ", itemNo=" + item_no + ", count=" + count
 				+ ", totalprice=" + totalprice + "]";
 	}
 }

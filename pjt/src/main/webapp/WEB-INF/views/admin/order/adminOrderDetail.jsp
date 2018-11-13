@@ -46,24 +46,23 @@
 <div class="divTable blueTable">
 	<div class="divTableHeading">
 		<div class="divTableRow">
+			<div class="divTableHead">번호</div>
 			<div class="divTableHead">주문번호</div>
-			<div class="divTableHead">주문상태</div>
-			<div class="divTableHead">주문자번호</div>
-			<div class="divTableHead">주문날짜</div>
-			<div class="divTableHead">주문요구사항</div>
+			<div class="divTableHead">상품번호</div>
+			<div class="divTableHead">상품개수</div>
 			<div class="divTableHead">가격합계</div>
 		</div>
 	</div>
 	<div class="divTableBody">
+<c:forEach items="${ordereditemList}" var="orderedItemVO">
 		<div class="divTableRow">
-			<div class="divTableCell"><a href="/admin/order/detail">${orderinfo.no}</a></div>
-			<%-- <div class="divTableCell"><a href='/board/read${pageMaker.makeQuery(pageMaker.pcr.pageNum) }&no=${orderVO.no}'>${orderVO.state}</a></div> --%>
-			<div class="divTableCell">${orderinfo.state }</div>
-			<div class="divTableCell">${orderinfo.mno}</div>
-			<div class="divTableCell"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${orderinfo.orderdate}" /></div>
-			<div class="divTableCell"><span class="badge bg-red">${orderinfo.comment}</span></div>
-			<div class="divTableCell">${orderinfo.totalprice }</div>
+			<div class="divTableCell">${orderedItemVO.no}</div>
+			<div class="divTableCell">${orderedItemVO.order_no }</div>
+			<div class="divTableCell">${orderedItemVO.item_no}</div>
+			<div class="divTableCell"><span class="badge bg-red">${orderedItemVO.count}</span></div>
+			<div class="divTableCell">${orderedItemVO.totalprice }</div>
 		</div>
+</c:forEach>
 	</div>
 </div>
 

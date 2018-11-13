@@ -11,12 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.vil.pjt.domain.AdminVO;
 import com.vil.pjt.domain.OrderVO;
+import com.vil.pjt.domain.OrderedItemVO;
 import com.vil.pjt.dto.AdminLoginDTO;
 import com.vil.pjt.persistence.AdminDAO;
 import com.vli.pjt.framework.paging.SearchCriteria;
 
 @Service
-public class AdminServiceImple implements AdminService {
+public class AdminServiceImpl implements AdminService {
 	@Inject
 	private AdminDAO dao;
 	
@@ -32,13 +33,13 @@ public class AdminServiceImple implements AdminService {
 
 	@Transactional
 	@Override
-	public Map<String, Object> adminOrderDetail(Integer no) throws Exception {
+	public Map<String, Object> adminOrderDetail(Integer orderNo) throws Exception {
 		Map<String, Object> param = new HashMap<>();
 		
-		OrderVO vo = dao.adminOrderSelect(no);
-		
+		OrderVO vo = dao.adminOrderSelect(orderNo);
+		List<OrderedItemVO> vo2 = dao.adminOrderedItemList(orderNo);
 		param.put("orderinfo", vo);
-		//param.put("itemlist", dao.adminItemList());
+		param.put("ordereditemList", vo2);
 		param.put("memberinfo", dao.adminMemberSelect(vo.getMno()));
 		
 		return param;

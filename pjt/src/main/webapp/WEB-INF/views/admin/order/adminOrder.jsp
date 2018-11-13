@@ -42,6 +42,23 @@
 
 <div class="admin-body">
 
+
+<div class="box-body" style="margin:10px;">
+	<select name="searchType">
+		<option value="NONE" <c:out value="${pcr.searchType == null?'selected':'' }"/>>NONE</option>
+		<option value="ORDER_NO" <c:out value="${pcr.searchType eq 'ORDER_NO'?'selected':'' }"/>>ORDER_NO</option>
+		<option value="CONTENT" <c:out value="${pcr.searchType eq 'CONTENT'?'selected':'' }"/>>Content</option>
+		<option value="WIRTER" <c:out value="${pcr.searchType eq 'WIRTER'?'selected':'' }"/>>Writer</option>
+		<option value="TITLE_CONTENT" <c:out value="${pcr.searchType eq 'TITLE_CONTENT'?'selected':'' }"/>>Title OR Content</option>
+		<option value="CONTENT_WRITER" <c:out value="${pcr.searchType eq 'CONTENT_WRITER'?'selected':'' }"/>>Content OR Writer</option>
+		<option value="TITLE_CONTENT_WRITER" <c:out value="${pcr.searchType eq 'TITLE_CONTENT_WRITER'?'selected':'' }"/>>Title OR Content OR Writer</option>
+	</select>
+	
+	<input type="text" name="keyword" id="keywordInput" value="${pcr.keyword }">
+	<button id="searchBtn">Search</button>
+	<button id="newBtn">New Board</button>
+</div>
+
 <div class="divTable blueTable">
 	<div class="divTableHeading">
 		<div class="divTableRow">
@@ -56,7 +73,7 @@
 	<div class="divTableBody">
 <c:forEach items="${orderList}" var="orderVO">
 	<div class="divTableRow">
-		<div class="divTableCell"><a href="/admin/order/detail?no=${orderVO.no}">${orderVO.no}</a></div>
+		<div class="divTableCell"><a href="/admin/order/detail?ono=${orderVO.no}">${orderVO.no}</a></div>
 		<%-- <div class="divTableCell"><a href='/board/read${pageMaker.makeQuery(pageMaker.pcr.pageNum) }&no=${orderVO.no}'>${orderVO.state}</a></div> --%>
 		<div class="divTableCell">${orderVO.state }</div>
 		<div class="divTableCell">${orderVO.mno}</div>
@@ -75,10 +92,48 @@
 </div>
 </div>
 
+<div class="blueTable outerTableFooter">
+<div class="tableFootStyle">
+<div class="links">
+		<c:if test="${pageMaker.prev }">
+			<a href="order${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a>
+		</c:if>
+
+		<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
+	
+				<%-- <c:out value="${pageMaker.pcr.pageNum == idx?'class =active':''}"/> --%>
+				<a href="order${pageMaker.makeSearch(idx) }" <c:out value="${pageMaker.pcr.pageNum == idx?'class =active':''}"/>>${idx }</a>
+
+		</c:forEach>
+
+		<c:if test="${pageMaker.next }">
+			<a href="order${pageMaker.makeSearch(pageMaker.endPage + 1) }">&raquo;</a>
+		</c:if>
+</div>
+</div>
+</div>
 
 
 </div>
 <hr>
 <div class="admin-footer">footer</div>
+<script type="text/javascript">
+//<![CDATA[
+	$(document).ready(function() {
+		$("#searchBtn").on("click", function(event) {
+			self.location = "order"
+				+ "${pageMaker.makeQuery(1)}"
+				+ "&searchType="
+				+ $("select option:selected").val()
+				+ "&keyword=" + encodeURIComponent($("#keywordInput").val());
+		});
+
+		$("#newBtn").on("click", function() {
+			self.location = "registerPage";
+		}
+		);}
+	);
+//]]>
+</script>
 </body>
 </html>
