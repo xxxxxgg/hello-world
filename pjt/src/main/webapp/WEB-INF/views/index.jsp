@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,51 +34,8 @@
 </head>
 <body>
 
-	<jsp:include page="member/header.jsp"></jsp:include>
-
-
-        <!-- <div id="wrapper">
-                <header id="header">
-                    <div id="subheader">
-                        <nav class="container">
-                            <p>The Village</p>
-                            <a href="/main" class = "heaer_link">장바구니</a>
-                            <a href="/main" class = "heaer_link">마이페이지</a>
-                            <a href="/main" class = "heaer_link">회원가입</a>
-                            <a href="/main" class = "heaer_link">로그인</a>
-                        <nav>
-                    </div>
-
-                    main header
-                    <div id="main-header">
-                        logo
-                        <div id="logo">
-                            <span id="ist">The</span><span id="iist">Village</span>
-                            <img id = "img_logo" src = "/resources/img/logo.png">
-                        </div>
-                        search area
-                        <div id="search">
-                                <form action="/search">
-                                    <input class="search-area" type="text" name="keyword" value="" placeholder="검색어 입력">
-                                    <input class="search-btn" type="submit" value="SEARCH">
-                                </form>
-                        </div>
-                    </div>
-                    
-                </header>
-                navigation bar
-                <div id="navigation">
-                    <nav>
-                        <a href="#">Home</a>
-                        <a href="#">New arrivals</a>
-                        <a href="#">Deals</a>
-                        <a href="#">Electronics</a>
-                        <a href="#">Accessories</a>
-                        <a href="#">Products</a>
-                        <a href="#">Order</a>
-                    </nav>
-                </div>
-        </div> -->
+	
+<jsp:include page="member/header.jsp"></jsp:include>
 
 
         <div class="slider">
@@ -217,6 +173,10 @@
 
 
 		<jsp:include page="member/footer.jsp"></jsp:include>
+
+        </div>
+
+    </div>
 
 </body>
 

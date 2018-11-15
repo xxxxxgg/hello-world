@@ -38,9 +38,9 @@
 		        <span>구매 옵션</span>
 		
 		        <div class="cable-choose">
-		            <a id="week">1주 렌탈</a>
-		            <a id="month">1개월 렌탈</a>
-		            <a id="newpro">새상품 렌탈</a>
+			        <div class="rental_type"><input type="radio" name="rental_type"  id="week" value="M" > 1주 렌탈</div>
+			        <div class="rental_type"><input type="radio" name="rental_type"  id="month" value="M"> 1개월 렌탈</div>
+			        <div class="rental_type"><input type="radio" name="rental_type"  id="newpro" value="M"> 새상품 렌탈</div>
 		        </div>
 		        <div class="quantity">
 		        	<span>수량 : </span>
@@ -70,7 +70,10 @@
 	</form>
 	<script>
 		function submitBtn_click(e){
-
+			if (($("#week").prop("checked") == false) && ($("#month").prop("checked") == false) && ($("#newpro").prop("checked") == false)) {
+				alert("렌탈 옵션을 선택해 주세요.");	
+				e.preventDefault();
+			}
 		}
 	</script>
 

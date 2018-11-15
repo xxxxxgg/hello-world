@@ -42,5 +42,7 @@ public class OrderController {
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public void cartGET() throws Exception {
 		logger.info("장바구니 페이지를 보여준다.");	
+		
+		
 	}	
 }

@@ -48,10 +48,5 @@ public class ProductController {
 		
 		return "redirect:/order/cart";
 	}	
-	
-	@RequestMapping(value = "/success", method = RequestMethod.GET)
-	public void home(Model Model) throws Exception {
-		logger.info("장바구니 완료페이지를 보여줌");
-	}	
 
 }

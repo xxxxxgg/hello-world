@@ -70,22 +70,22 @@
 .cable-choose {
     margin-bottom: 20px;
 }
-.cable-choose a {
-    border: 2px solid #E1E8EE;
-    border-radius: 6px;
-    padding: 13px 20px;
-    font-size: 14px;
+
+.rental_type {
+	border: 2px solid #E1E8EE;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom : 5px;
     color: #5E6977;
-    background-color: #fff;
     cursor: pointer;
     transition: all .5s;
 }
 
-.cable-choose a:hover{
-	border: 2px solid #86939E;
-	outline: none;
-}   
-
+.rental_type input {
+	font-size: 30px;
+}
+ 
+/*구매옵션+수량 영역*/
 .cable-config {
     border-bottom: 1px solid #E1E8EE;
     margin-bottom: 20px;
