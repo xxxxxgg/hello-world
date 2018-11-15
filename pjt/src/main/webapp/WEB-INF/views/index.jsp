@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>The Village main</title>
+    <title>The Village</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -24,9 +24,18 @@
              });
             });
     </script>
+    
+	<script>
+	function javascript(){
+	    window.location.href="member/register";
+	}
+	</script>
 
 </head>
 <body>
+
+	<jsp:include page="member/header.jsp"></jsp:include>
+
 
         <div id="wrapper">
                 <header id="header">
@@ -71,11 +80,11 @@
                 </div>
         </div>
 
-        <div class="slider">
 
+        <div class="slider">
             <img class="slides" src="/resources/img/high.jpg">
+        	<img class="slides" src="/resources/img/high3.jpg">
             <img class="slides" src="/resources/img/high2.jpg">
-            <img class="slides" src="/resources/img/high3.jpg">
             <img class="slides" src="/resources/img/high4.jpg">
         </div>
 
@@ -203,11 +212,15 @@
                 </div>
 
             </div>
-            </div>
+          </div><!-- container -->
+
+
+		<jsp:include page="member/footer.jsp"></jsp:include>
 
         </div>
 
     </div>
+
 </body>
 
 </html>

@@ -24,6 +24,31 @@
 	<!-- 컨트롤러 패키지만 스캔해야 aop가 스캔충돌을 안함 -->
 	<context:component-scan base-package="com.vil.pjt.controller" />
 	
+
+	<!-- 인터셉터 -->
+  <beans:bean id="sampleInterceptor" class="com.vil.pjt.interceptor.SampleInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/doA" />
+			<mapping path="/doB" />
+			<beans:ref bean="sampleInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	<!-- 인터셉터 -->
+	<beans:bean id="authInterceptor" class="com.vil.pjt.interceptor.AuthInterceptor"></beans:bean>
+	<beans:bean id="loginInterceptor" class="com.vil.pjt.interceptor.LoginInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/loginPost" />
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/member/mypage" />
+			<beans:ref bean="authInterceptor"/>
+    </interceptor>
+  </interceptors>
+
 	<!-- 관리자 로그인 설정 -->
 	<beans:bean id="adminLoginInterceptor" class="com.vil.pjt.interceptor.AdminLoginInterceptor"></beans:bean>
 	<beans:bean id="adminInterceptor" class="com.vil.pjt.interceptor.AdminInterceptor"></beans:bean>

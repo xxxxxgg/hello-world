@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vil.pjt.mapper.OrderMapper">
+	
+	<select id="orerList" resultType="com.vil.pjt.domain.OrderListVO">
+		select member_id, tb_order.order_id, ordered_item_id, product_name, quantity, price, rental_type, startdate, enddate, total_price, state, orderdate
+		from tb_order, tb_ordered_item, product
+		where member_id = #{member_id} 
+		and tb_order.order_id = tb_ordered_item.order_id
+		and tb_ordered_item.product_id = product.product_id
+		order by order_id
+	</select> 
+	
+</mapper>
+
+
+

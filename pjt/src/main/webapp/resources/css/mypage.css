@@ -1,0 +1,118 @@
+#register-form {
+	width : 1000px;
+	margin : 200px auto 50px auto;
+}
+
+table {
+	width : 600px;
+	margin : 70px auto 50px auto;
+	border-spacing : 3px 50px;
+	
+	border-top: 2px dotted #abbfc9; 
+    border-collapse: collapse;
+}
+
+
+td {
+	height : 35px;
+	margin : 10px;
+	padding : 5px;
+	border-bottom: 2px dotted #abbfc9;
+}
+
+/*약관동의 오른쪽정렬*/
+.right-align {
+	text-align : right;
+}
+
+/*상단에 회원가입*/
+#table-title {
+	color : #5f90a8;
+	text-align : center;
+}
+
+/*마이페이지 카테고리*/
+#mypage-title {
+	color : #5f90a8;
+	text-align : center;
+}
+#mypage-sub-title {
+	display : inline-block;
+	width : 200px;
+	margin : 0px auto;
+	text-align : center;
+}
+
+
+a:link {
+	text-decoration: none; 
+	color: #5f90a8;
+}
+a:visited {
+	text-decoration: none; 
+	color: #5f90a8;
+}
+a:hover {
+	text-decoration: none; 
+	color: #5f90a8;
+	font-weight : bolder;
+}
+
+
+
+/*표에서 첫번째 열*/
+#title {
+	background : #cde4f2;
+	text-align : center;
+}
+td input[type="text"], input[type="password"], input[type="email"], input[type="raido"] , input[type="date"] 
+{ 
+	height: 20px;	
+}
+
+/*중복확인 버튼*/
+#user_id_checkBtn {
+	margin : 0 auto;
+	height :26px;	
+	width : 80px;
+	background : #4b778c;	
+	color:#fff;
+	border: none;
+	text-decoration: none;
+	font-size: 15px;
+	cursor: pointer;
+	border-radius:8px;
+}
+
+#user_id_checkBtn:hover {
+	background : #5f90a8;
+}
+
+/*가입하기 버튼*/
+#submit-button {
+	width : 600px;
+	margin : 10px auto;
+	text-align : center;
+}
+button {
+	margin : 0 auto;
+	height : 40px;	
+	width : 100px;
+	background : #4b778c;	
+	color:#fff;
+	border: none;
+	text-decoration: none;
+	font-size: 15px;
+	cursor: pointer;
+	border-radius:10px;
+}
+button:hover {
+	background : #5f90a8;
+}
+
+/*약관동의*/
+caption {
+	margin-bottom : 20px;
+	color : #5f90a8;
+	font-size: 20px;
+}
