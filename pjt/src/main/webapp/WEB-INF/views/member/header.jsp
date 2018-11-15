@@ -20,7 +20,7 @@
 		<div id="subheader">
 			<nav class="container">
 				<!-- <p>The Village</p> -->
-				<a href="/main" class = "heaer_link">장바구니</a>
+				<a href="/order/cart" class = "heaer_link">장바구니</a>
 				
 				<a href="/member/mypage" class = "heaer_link">마이페이지</a>
 
@@ -49,7 +49,7 @@
 			<!-- search area -->
 			<div id="search">
 				<form action="">
-					<input class="search-area" type="text" name="text" placeholder="검색어 입력">
+					<input class="search-area" type="text" name="text" placeholder="원하는 상품을 검색하세요!">
 					<input class="search-btn" type="submit" name="submit" value="SEARCH">
 				</form>
 			</div>
@@ -59,13 +59,12 @@
 		<!-- navigation bar -->
 		<div id="navigation">
 			<nav>
-				<a href="#">Home</a>
-				<a href="#">New arrivals</a>
-				<a href="#">Deals</a>
-				<a href="#">Electronics</a>
-				<a href="#">Accessories</a>
-				<a href="#">Products</a>
-				<a href="#">Order</a>
+				<a href="/product/cate1">유아동</a><span id="gubun">|</span>
+				<a href="#">레저/취미</a><span id="gubun">|</span>
+				<a href="#">패션/뷰티</a><span id="gubun">|</span>
+				<a href="#">리빙</a><span id="gubun">|</span>
+				<a href="#">반려동물</a><span id="gubun">|</span>
+				<a href="#">중고판매관</a>
 			</nav>
 		</div>
 	</div>

@@ -36,10 +36,9 @@
 	<jsp:include page="member/header.jsp"></jsp:include>
 
         <div class="slider">
-
             <img class="slides" src="/resources/img/high.jpg">
+        	<img class="slides" src="/resources/img/high3.jpg">
             <img class="slides" src="/resources/img/high2.jpg">
-            <img class="slides" src="/resources/img/high3.jpg">
             <img class="slides" src="/resources/img/high4.jpg">
         </div>
 
@@ -167,11 +166,9 @@
                 </div>
 
             </div>
-            </div>
+            </div><!-- container -->
 
-        </div>
-
-        </div>
+		<jsp:include page="member/footer.jsp"></jsp:include>
 </body>
 
 </html>

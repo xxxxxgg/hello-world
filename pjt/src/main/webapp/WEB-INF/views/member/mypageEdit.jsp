@@ -21,7 +21,7 @@
 		<hr style="border: solid 1px #e3edf2;">
 		<div id="mypage-title">
 			<div id="mypage-sub-title"><a href="/member/mypageEdit">회원정보수정</a></div>
-			<div id="mypage-sub-title"><a href="/member/mypageOrderList">주문내역</a></div>
+			<div id="mypage-sub-title"><a href="/order/mypageOrderList">주문내역</a></div>
 			<div id="mypage-sub-title"><a href="/member/mypageWithdraw">회원탈퇴</a></div>
 		</div>
 		

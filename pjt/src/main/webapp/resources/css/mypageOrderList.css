@@ -30,7 +30,7 @@ a:hover {
 }
 
 #register-form {
-	width : 800px;
+	width : 1000px;
 	margin : 200px auto 50px auto;
 }
 
@@ -47,7 +47,7 @@ table, th, td {
 }
 
 table {
-	width : 800px;
+	width : 950px;
 	margin : 30px auto 20px auto;
 }
 
@@ -57,4 +57,24 @@ td {
 	margin : 10px;
 	padding : 5px;
 	text-align : center;
+}
+
+button {
+	margin : 0 auto;
+	height : 40px;	
+	width : 100px;
+	
+	background : #4b778c;	
+	color:#fff;
+	border: none;
+	text-decoration: none;
+	font-size: 15px;
+	cursor: pointer;
+	border-radius:10px;
+}
+#gotohome {
+	text-decoration: none;
+}
+button:hover {
+	background : #5f90a8;
 }

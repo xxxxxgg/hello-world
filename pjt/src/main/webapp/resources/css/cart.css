@@ -1,0 +1,78 @@
+/*상단에 마이페이지*/
+#table-title {
+	color : #5f90a8;
+	text-align : center;
+}
+
+#register-form {
+	width : 1000px;
+	margin : 200px auto 50px auto;
+}
+
+
+/*표에서 첫번째 열*/
+#title {
+	background : #cde4f2;
+	text-align : center;
+}
+
+table, th, td {
+	border-top: 2px dotted #abbfc9; 
+	border-collapse : collapse;
+}
+
+table {
+	width : 950px;
+	margin : 10px auto 20px auto;
+}
+
+td {
+	height : 35px;
+	margin : 10px;
+	padding : 5px;
+	text-align : center;
+}
+
+/*선택삭제*/
+#select_delete {
+	display : inline-block;
+	margin : 20px 0 0 25px ;
+	height : 40px;	
+	width : 80px;
+	
+	background : #c0c0c0;	
+	color:#fff;
+	border: none;
+	text-decoration: none;
+	font-size: 15px;
+	cursor: pointer;
+}
+#gotohome {
+	text-decoration: none;
+}
+#select_delete:hover {
+	background : #abbfc9;
+}
+
+/*주문하기 버튼*/
+#submit-button {
+	display : inline-block;
+	width : 900px;
+	margin : 10px 50px;
+	text-align : center;
+}
+#order_btn {
+	margin : 0 auto;
+	height : 40px;	
+	width : 100px;
+	background : #4b778c;	
+	color:#fff;
+	border: none;
+	text-decoration: none;
+	font-size: 15px;
+	cursor: pointer;
+	border-radius:10px;
+}
+#order_btn:hover {
+	background : #5f90a8;
+}

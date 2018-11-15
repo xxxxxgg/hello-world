@@ -83,6 +83,7 @@ public class MemberController {
 		}
 		model.addAttribute("memberVO", vo);
 	}
+	
 	@RequestMapping(value = "/loginWrong", method = RequestMethod.GET)
 	public void loginWrongGET(@ModelAttribute("dto") LoginDTO dto) throws Exception {
 		logger.info("로그인 wrong 페이지를 보여준다."); //로그인정보가 옳지 않을 때
@@ -155,10 +156,6 @@ public class MemberController {
 	@RequestMapping(value = "/successWithdraw", method = RequestMethod.GET)
 	public void successWithdraw() throws Exception {
 		logger.info("탈퇴완료 완료페이지를 보여줌");
-	}	
-	@RequestMapping(value = "/mypageOrderList", method = RequestMethod.GET)
-	public void mypageOrderListGET() throws Exception {
-		logger.info("주문내역 페이지를 보여준다.");	
 	}	
 	
 
