@@ -3,19 +3,12 @@ package com.vil.pjt.domain;
 public class ProductVO {
 	
 	private Integer product_id;
-	
 	private String product_name;
-	
 	private String category;
-	
 	private Integer priceforweek;
-	
 	private Integer priceformonth;
-	
 	private Integer pricefornew;
-	
 	private String mainimg;
-	
 	private String detailimg;
 
 	public Integer getProduct_id() {
