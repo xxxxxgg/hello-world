@@ -49,9 +49,9 @@
                         </div>
                         <!-- search area -->
                         <div id="search">
-                                <form action="">
-                                    <input class="search-area" type="text" name="text" placeholder="검색어 입력">
-                                    <input class="search-btn" type="submit" name="submit" value="SEARCH">
+                                <form action="/search">
+                                    <input class="search-area" type="text" name="keyword" value="" placeholder="검색어 입력">
+                                    <input class="search-btn" type="submit" value="SEARCH">
                                 </form>
                         </div>
                     </div>
@@ -207,7 +207,7 @@
 
         </div>
 
-        </div>
+    </div>
 </body>
 
 </html>
