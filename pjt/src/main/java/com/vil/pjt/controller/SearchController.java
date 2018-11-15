@@ -1,6 +1,3 @@
-/**
- * 강부경이 하고있슴
- */
 package com.vil.pjt.controller;
 
 import java.util.Locale;

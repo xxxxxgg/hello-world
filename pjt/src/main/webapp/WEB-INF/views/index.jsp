@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,11 +38,11 @@
 	<jsp:include page="member/header.jsp"></jsp:include>
 
 
-        <div id="wrapper">
+        <!-- <div id="wrapper">
                 <header id="header">
                     <div id="subheader">
                         <nav class="container">
-                            <!-- <p>The Village</p> -->
+                            <p>The Village</p>
                             <a href="/main" class = "heaer_link">장바구니</a>
                             <a href="/main" class = "heaer_link">마이페이지</a>
                             <a href="/main" class = "heaer_link">회원가입</a>
@@ -49,14 +50,14 @@
                         <nav>
                     </div>
 
-                    <!-- main header -->
+                    main header
                     <div id="main-header">
-                        <!-- logo -->
+                        logo
                         <div id="logo">
-                            <!-- <span id="ist">The</span><span id="iist">Village</span> -->
+                            <span id="ist">The</span><span id="iist">Village</span>
                             <img id = "img_logo" src = "/resources/img/logo.png">
                         </div>
-                        <!-- search area -->
+                        search area
                         <div id="search">
                                 <form action="/search">
                                     <input class="search-area" type="text" name="keyword" value="" placeholder="검색어 입력">
@@ -66,7 +67,7 @@
                     </div>
                     
                 </header>
-                <!-- navigation bar -->
+                navigation bar
                 <div id="navigation">
                     <nav>
                         <a href="#">Home</a>
@@ -78,7 +79,7 @@
                         <a href="#">Order</a>
                     </nav>
                 </div>
-        </div>
+        </div> -->
 
 
         <div class="slider">
@@ -216,10 +217,6 @@
 
 
 		<jsp:include page="member/footer.jsp"></jsp:include>
-
-        </div>
-
-    </div>
 
 </body>
 

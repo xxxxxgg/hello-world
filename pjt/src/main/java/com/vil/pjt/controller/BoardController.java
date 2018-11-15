@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.vil.pjt.domain.JsonVO;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/temp")
 public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
