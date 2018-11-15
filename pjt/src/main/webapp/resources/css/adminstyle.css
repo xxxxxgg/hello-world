@@ -74,12 +74,19 @@ div.blueTable {
   font-size: 14px;
 }
 .blueTable .tableFootStyle .links {
-	 text-align: right;
+	 text-align: center;
 }
 .blueTable .tableFootStyle .links a{
   display: inline-block;
   background: #1C6EA4;
   color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+.blueTable .tableFootStyle .links a:active{
+  display: inline-block;
+  background: #1C6EA4;
+  color: red;
   padding: 2px 8px;
   border-radius: 5px;
 }

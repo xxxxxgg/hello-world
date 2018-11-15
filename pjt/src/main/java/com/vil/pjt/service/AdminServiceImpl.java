@@ -30,7 +30,6 @@ public class AdminServiceImpl implements AdminService {
 	public List<OrderVO> adminOrderList(SearchCriteria scr) throws Exception {
 		return dao.adminOrderList(scr);
 	}
-
 	@Transactional
 	@Override
 	public Map<String, Object> adminOrderDetail(Integer orderNo) throws Exception {
@@ -44,10 +43,11 @@ public class AdminServiceImpl implements AdminService {
 		
 		return param;
 	}
-
 	@Override
 	public int adminOrderCount(SearchCriteria scr) throws Exception {
 		return dao.adminOrderCount(scr);
 	}
+
+
 
 }

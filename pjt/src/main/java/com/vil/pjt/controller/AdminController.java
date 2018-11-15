@@ -81,9 +81,23 @@ public class AdminController {
 
 		return "/admin/order/adminOrderDetail";
 	}
+	@RequestMapping(value = "/order/q", method = RequestMethod.POST)
+	public String adminOrderUpdatePOST(@RequestParam("ono") Integer orderNo, Model model) throws Exception { // tb_order.no
+		logger.info("adminOrderGET.......................zz");
+		
+		Map<String, Object> param = service.adminOrderDetail(orderNo);
+		
+		//model.addAttribute("orderDetail", service.adminOrderRead());
+		
+		model.addAttribute("orderinfo", param.get("orderinfo"));
+		model.addAttribute("ordereditemList", param.get("ordereditemList"));
+		model.addAttribute("memberinfo", param.get("memberinfo"));
+
+		return "/admin/order/adminOrderDetail";
+	}
 	
 	@RequestMapping(value = "/member", method = RequestMethod.GET)
-	public String adminMemberGET(Model model) throws Exception {
+	public String adminMemberGET(@ModelAttribute("pcr") SearchCriteria pcr, Model model) throws Exception {
 		logger.info("adminOrderGET.......................zz");
 		
 		return "/admin/adminMember";

@@ -3,9 +3,41 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<jsp:include page="../adminHeader.jsp"></jsp:include>
-
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Village Admin Order Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link href="/resources/css/adminstyle.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+</head>
+<body>
+<hr>
+<div class="admin-header">
+	<div class="header-left">
+		<h1>Admin Order</h1>
+	</div>
+	<div class="header-right">
+		<ul class="header-rlist">
+			<li>${alogin }</li>
+			<li><a href="/admin">메인으로</a></li>
+		</ul>
+	</div>
+</div>
+<hr>
+<div class="admin-nav">
+	<ul>
+		<li><a href="/admin/order">주문관리</a></li>
+		<li><a href="/admin/member">회원관리</a></li>
+		<li><a href="/admin/sell">판매관리</a></li>
+	</ul>
+</div>
 
 <div class="admin-body">
 
@@ -23,6 +55,7 @@
 	
 	<input type="text" name="keyword" id="keywordInput" value="${pcr.keyword }">
 	<button id="searchBtn">Search</button>
+	<button id="newBtn">New Board</button>
 </div>
 
 <div class="divTable blueTable">
@@ -93,8 +126,13 @@
 				+ $("select option:selected").val()
 				+ "&keyword=" + encodeURIComponent($("#keywordInput").val());
 		});
+
+		$("#newBtn").on("click", function() {
+			self.location = "registerPage";
 		}
+		);}
 	);
 //]]>
 </script>
-<jsp:include page="../adminFooter.jsp"></jsp:include>
+</body>
+</html>

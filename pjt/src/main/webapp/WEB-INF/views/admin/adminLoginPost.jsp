@@ -49,7 +49,7 @@ ${adminVO.name }
 ${alogin }
 
 <script type="text/javascript">
-	self.location = "/admin/adminLogin";
+	self.location = "/admin/login";
 </script>
 </body>
 </html>
