@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.vil.pjt.domain.AdminVO;
+import com.vil.pjt.domain.FaqVO;
 import com.vil.pjt.domain.OrderVO;
 import com.vil.pjt.domain.OrderedItemVO;
 import com.vil.pjt.dto.AdminLoginDTO;
@@ -21,17 +22,17 @@ public class AdminDAOImpl implements AdminDAO {
 	
 	private static String namespace = "com.vil.pjt.mappers.AdminMapper";
 	
-	/**
-	 * admin Login
+	/*
+	 * admin Login ***********************************************************************************************************
 	 */
 	@Override
 	public AdminVO adminLogin(AdminLoginDTO dto) throws Exception {
 		return session.selectOne(namespace + ".adminLogin", dto);
 	}
-	/***/
+	/**/
 	
-	/**
-	 * admin Order
+	/*
+	 * admin Order ************************************************************************************************************
 	 */
 	@Override
 	public OrderVO adminOrderSelect(Integer no) throws Exception {
@@ -45,10 +46,10 @@ public class AdminDAOImpl implements AdminDAO {
 	public int adminOrderCount(SearchCriteria scr) throws Exception {
 		return session.selectOne(namespace + ".adminOrderCount", scr);
 	}
-	/***/
+	/**/
 	
-	/**
-	 * Admin Item
+	/*
+	 * Admin Item *************************************************************************************************************
 	 */
 	@Override
 	public OrderedItemVO adminOrderedItemSelect(Integer itemNo) throws Exception {
@@ -58,17 +59,20 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<OrderedItemVO> adminOrderedItemList(Integer orderNo) throws Exception {
 		return session.selectList(namespace + ".adminOrderedItemList", orderNo);
 	}
-	/***/
+	/**/
 	
-	/**
-	 * admin Member
+	/*
+	 * admin Member ***********************************************************************************************************
 	 */
 	@Override
 	public AdminVO adminMemberSelect(Integer no) throws Exception {
 		return session.selectOne(namespace + ".adminMemberSelect", no);
 	}
-	/***/
+	/**/
 
+	/*
+	 * batch test
+	 */
 	@Override
 	public void createOrderByBatch(Map<String, Object> map) {
 		session.insert(namespace + ".createBoardByBatch", map);
@@ -77,6 +81,20 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public void createOrderedItemByBatch(Map<String, Object> paramMap) throws Exception {
 		session.insert(namespace + ".createBoardByBatch2", paramMap);
+	}
+	/**/
+
+	/*
+	 * admin faq ************************************************************************************************************
+	 */
+	@Override
+	public List<FaqVO> adminFaqList(SearchCriteria scr) throws Exception {
+		return session.selectList(namespace + ".adminFaqList", scr);
+	}
+
+	@Override
+	public int adminFaqCount(SearchCriteria scr) throws Exception {
+		return session.selectOne(namespace + ".adminFaqCount", scr);
 	}
 
 }
