@@ -75,9 +75,9 @@ CREATE TABLE tb_ordereditem
 (
     `no`          INT    NOT NULL    AUTO_INCREMENT, 
     `order_no`    INT    NOT NULL, 
-    `item_no`     INT    NOT NULL    COMMENT '¾ÆÀÌÅÛ¹øÈ£', 
-    `count`       INT    NOT NULL    COMMENT '°¹¼ö', 
-    `totalprice`  INT    NOT NULL    COMMENT '°¹¼öÃÑÇÕ°¡°Ý', 
+    `item_no`     INT    NOT NULL, 
+    `count`       INT    NOT NULL, 
+    `totalprice`  INT    NOT NULL, 
     PRIMARY KEY (no)
 );
 
@@ -103,7 +103,7 @@ select tb_order.no, tb_member2.id, tb_order.totalprice
 from tb_order
 inner join tb_member2 on tb_order.mno = tb_member2.no;
 
-update tb_order set state = '¹è¼ÛÁß' where no = 3;
+update tb_order set state = 'ï¿½ï¿½ï¿½ï¿½ï¿½' where no = 3;
 update tb_ordereditem set totalprice = 20000 where no = 1;
 
 INSERT INTO tb_order (state, mno, comment, totalprice) VALUES ('state 01', 01, 'comment 01', 1000);

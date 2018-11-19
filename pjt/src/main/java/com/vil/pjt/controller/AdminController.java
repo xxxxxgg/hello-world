@@ -108,11 +108,11 @@ public class AdminController {
 	public String adminFaqGET(@ModelAttribute("pcr") SearchCriteria pcr, Model model) throws Exception { 
 		logger.info("adminFaqGET.......................zz");
 		
-		model.addAttribute("faqList", service.adminFaqList(pcr));
+		model.addAttribute("faqlist", service.adminFaqList(pcr));
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setPcr(pcr);
-		pageMaker.setTotalCount(service.adminOrderCount(pcr));
+		pageMaker.setTotalCount(service.adminFaqCount(pcr));
 		
 		model.addAttribute("pageMaker", pageMaker);
 		

@@ -10,21 +10,19 @@
 <div class="divTable blueTable">
 	<div class="divTableHeading">
 		<div class="divTableRow">
-			<div class="divTableHead">주문번호</div>
-			<div class="divTableHead">주문상태</div>
-			<div class="divTableHead">주문자번호</div>
-			<div class="divTableHead">주문날짜</div>
-			<div class="divTableHead">주문요구사항</div>
-			<div class="divTableHead">가격합계</div>
+			<div class="divTableHead">faq번호</div>
+			<div class="divTableHead">faq제목</div>
+			<div class="divTableHead">faq내용</div>
+			<div class="divTableHead">날짜</div>
 		</div>
 	</div>
 	<div class="divTableBody">
-<c:forEach items="${faqList}" var="faqVO">
+<c:forEach items="${faqlist}" var="faqVO">
 	<div class="divTableRow">
-		<div class="divTableCell"><a href='/admin/order/detail${pageMaker.makeQuery(pageMaker.pcr.pageNum) }&no=${faqVO.no}'>${faqVO.no}</a></div>
+		<div class="divTableCell" style="width:10px;"><a href='/admin/faq${pageMaker.makeQuery(pageMaker.pcr.pageNum) }&no=${faqVO.no}'>${faqVO.no}</a></div>
 		<div class="divTableCell">${faqVO.title}</div>
 		<div class="divTableCell">${faqVO.content}</div>
-		<div class="divTableCell"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${faqVO.orderdate}" /></div>
+		<div class="divTableCell"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${faqVO.regdate}" /></div>
 	</div>
 </c:forEach>
 	</div>

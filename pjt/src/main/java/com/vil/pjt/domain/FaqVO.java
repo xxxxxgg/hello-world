@@ -8,10 +8,10 @@ public class FaqVO {
 	private String content;
 	private Date regdate;
 
-	public Integer getBno() {
+	public Integer getNo() {
 		return no;
 	}
-	public void setBno(Integer no) {
+	public void setNo(Integer no) {
 		this.no = no;
 	}
 	public String getTitle() {

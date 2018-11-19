@@ -74,7 +74,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- admin faq************************************************************************************************************ -->
-	<select id="adminFaqList" resultType="OrderVO">
+	<select id="adminFaqList" resultType="FaqVO">
 		<![CDATA[
 			select * from tb_faq
 			where no > 0			
