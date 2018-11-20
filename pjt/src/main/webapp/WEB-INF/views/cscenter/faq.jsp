@@ -51,7 +51,7 @@
 				<div class="faqlist" style="margin:30px 0px 30px 0px;">
 					<div>자주 묻는 질문 10</div>
 					<ul class="faqul" style="border-top:2px solid;padding-top:30px;">
-						<c:forEach items="${faqlist}" var="faq" varStatus="status" end="9">
+						<c:forEach items="${faqlist}" var="faq" varStatus="status">
 						<li>
 							<button class="accordion"><span>${status.count }</span>
 								${faq.title}

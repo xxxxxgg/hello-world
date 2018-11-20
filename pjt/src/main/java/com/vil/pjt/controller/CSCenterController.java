@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.vil.pjt.domain.JsonVO;
-import com.vil.pjt.service.AdminService;
+import com.vil.pjt.service.CSCenterService;
 import com.vli.pjt.framework.paging.PageMaker;
 import com.vli.pjt.framework.paging.SearchCriteria;
 
@@ -22,7 +22,7 @@ import com.vli.pjt.framework.paging.SearchCriteria;
 @RequestMapping("/cscenter")
 public class CSCenterController {
 	@Inject
-	private AdminService service;
+	private CSCenterService service;
 	
 	private static final Logger logger = LoggerFactory.getLogger(CSCenterController.class);
 
@@ -30,21 +30,28 @@ public class CSCenterController {
 	public String home(@ModelAttribute("pcr") SearchCriteria pcr, Model model, Locale locale) throws Exception {
 		logger.info("Welcome cscenter! The client locale is {}.-----------------------------", locale);
 		
-		model.addAttribute("faqlist", service.adminFaqList(pcr));
+		model.addAttribute("faqlist", service.FaqList(pcr));
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setPcr(pcr);
-		pageMaker.setTotalCount(service.adminFaqCount(pcr));
+		pageMaker.setTotalCount(service.FaqCount(pcr));
 		
 		model.addAttribute("pageMaker", pageMaker);
 		
 		return "/cscenter/csmain";
 	}
 	
-	@RequestMapping(value = "/json", method = RequestMethod.GET)
-	public @ResponseBody JsonVO json() {
-		JsonVO vo = new JsonVO();
-		return vo;
+	@RequestMapping(value = "/faq", method = RequestMethod.GET)
+	public void faq(@ModelAttribute("pcr") SearchCriteria pcr, Model model) throws Exception {
+		logger.info("cscenter faq -------------------------------------------");
+		
+		model.addAttribute("faqlist", service.FaqList(pcr));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setPcr(pcr);
+		pageMaker.setTotalCount(service.FaqCount(pcr));
+		
+		model.addAttribute("pageMaker", pageMaker);
 	}
 	
 	@RequestMapping(value = "test", method = RequestMethod.GET)

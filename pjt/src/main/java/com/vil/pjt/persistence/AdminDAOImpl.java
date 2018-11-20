@@ -97,4 +97,19 @@ public class AdminDAOImpl implements AdminDAO {
 		return session.selectOne(namespace + ".adminFaqCount", scr);
 	}
 
+	@Override
+	public void adminFaqInsert(FaqVO vo) throws Exception { //REST
+		session.insert(namespace + ".adminFaqInsert", vo);
+	}
+
+	@Override
+	public void adminFaqUpdate(FaqVO vo) throws Exception { //REST
+		session.update(namespace + ".adminFaqUpdate", vo);
+	}
+
+	@Override
+	public void adminFaqDelete(Integer fno) throws Exception { //REST
+		session.delete(namespace + ".adminFaqDelete", fno);
+	}
+
 }

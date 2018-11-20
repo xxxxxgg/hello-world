@@ -66,14 +66,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
-	<!-- admin member*********************************************************************************************************** -->
+	<!-- admin member********************************************************************************************************************** -->
 	<select id="adminMemberSelect" resultType="AdminVO">
 		select * 
 		from tb_member2
 		where no = #{mno}
 	</select>
 	
-	<!-- admin faq************************************************************************************************************ -->
+	<!-- admin faq************************************************************************************************************************ -->
 	<select id="adminFaqList" resultType="FaqVO">
 		<![CDATA[
 			select * from tb_faq
@@ -89,6 +89,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			where no > 0
 		]]>
 	</select>
+	<insert id="adminFaqInsert">
+		insert into tb_faq(title, content)
+		values(#{title}, #{content})
+	</insert>
+	<update id="adminFaqUpdate">
+		update tb_faq set title = #{title}, content = #{content}
+		where no = #{fno}
+	</update>
+	<delete id="adminFaqDelete">
+		delete from tb_faq where no = #{fno}
+	</delete>
 	
 	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 														TEST

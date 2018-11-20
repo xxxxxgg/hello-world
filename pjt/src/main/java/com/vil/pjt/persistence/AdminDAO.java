@@ -39,4 +39,10 @@ public interface AdminDAO {
 	 */
 	public List<FaqVO> adminFaqList(SearchCriteria scr) throws Exception;
 	public int adminFaqCount(SearchCriteria scr) throws Exception;
+
+	public void adminFaqInsert(FaqVO vo) throws Exception;
+
+	public void adminFaqUpdate(FaqVO vo) throws Exception;
+
+	public void adminFaqDelete(Integer fno) throws Exception;
 }

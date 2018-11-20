@@ -65,6 +65,21 @@ public class AdminServiceImpl implements AdminService {
 		return dao.adminFaqCount(scr);
 	}
 
+	@Override
+	public void addFaq(FaqVO vo) throws Exception { //REST
+		dao.adminFaqInsert(vo);
+	}
+
+	@Override
+	public void modifyFaq(FaqVO vo) throws Exception { //REST
+		dao.adminFaqUpdate(vo);
+	}
+
+	@Override
+	public void removeFaq(Integer fno) throws Exception { //REST
+		dao.adminFaqDelete(fno);
+	}
+
 
 
 }

@@ -14,11 +14,6 @@
 	<select name="searchType">
 		<option value="NONE" <c:out value="${pcr.searchType == null?'selected':'' }"/>>NONE</option>
 		<option value="ORDER_NO" <c:out value="${pcr.searchType eq 'ORDER_NO'?'selected':'' }"/>>ORDER_NO</option>
-		<option value="CONTENT" <c:out value="${pcr.searchType eq 'CONTENT'?'selected':'' }"/>>Content</option>
-		<option value="WIRTER" <c:out value="${pcr.searchType eq 'WIRTER'?'selected':'' }"/>>Writer</option>
-		<option value="TITLE_CONTENT" <c:out value="${pcr.searchType eq 'TITLE_CONTENT'?'selected':'' }"/>>Title OR Content</option>
-		<option value="CONTENT_WRITER" <c:out value="${pcr.searchType eq 'CONTENT_WRITER'?'selected':'' }"/>>Content OR Writer</option>
-		<option value="TITLE_CONTENT_WRITER" <c:out value="${pcr.searchType eq 'TITLE_CONTENT_WRITER'?'selected':'' }"/>>Title OR Content OR Writer</option>
 	</select>
 	
 	<input type="text" name="keyword" id="keywordInput" value="${pcr.keyword }">
