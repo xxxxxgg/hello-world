@@ -46,13 +46,6 @@
 	</div>
 </div>
 
-
-<div class="blueTable outerTableFooter">
-<div class="tableFootStyle">
-<div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
-</div>
-</div>
-
 <div class="blueTable outerTableFooter">
 <div class="tableFootStyle">
 <div class="links">
@@ -70,6 +63,7 @@
 		<c:if test="${pageMaker.next }">
 			<a href="order${pageMaker.makeSearch(pageMaker.endPage + 1) }">&raquo;</a>
 		</c:if>
+		
 </div>
 </div>
 </div>

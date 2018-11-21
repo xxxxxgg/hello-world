@@ -88,6 +88,10 @@ public class AdminDAOImpl implements AdminDAO {
 	 * admin faq ************************************************************************************************************
 	 */
 	@Override
+	public FaqVO adminFaqSelect(Integer fno) throws Exception {
+		return session.selectOne(namespace + ".adminFaqSelect", fno);
+	}
+	@Override
 	public List<FaqVO> adminFaqList(SearchCriteria scr) throws Exception {
 		return session.selectList(namespace + ".adminFaqList", scr);
 	}
@@ -111,5 +115,6 @@ public class AdminDAOImpl implements AdminDAO {
 	public void adminFaqDelete(Integer fno) throws Exception { //REST
 		session.delete(namespace + ".adminFaqDelete", fno);
 	}
+
 
 }

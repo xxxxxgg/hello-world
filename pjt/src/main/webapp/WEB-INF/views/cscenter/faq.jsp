@@ -49,7 +49,7 @@
 					</div>
 				</div>
 				<div class="faqlist" style="margin:30px 0px 30px 0px;">
-					<div>자주 묻는 질문 10</div>
+					<div><a href="#">전체</a> | <a href="#">상품</a> | <a href="#">주문</a> | <a href="#">결제</a></div>
 					<ul class="faqul" style="border-top:2px solid;padding-top:30px;">
 						<c:forEach items="${faqlist}" var="faq" varStatus="status">
 						<li>
@@ -70,16 +70,16 @@
 
 <script>
 function faq() {
-	location.href="cscenter/faq";
+	location.replace("faq");
 }
 function ask() {
-	location.href="cscenter/ask";
+	location.href = "ask";
 }
 function notice() {
-	location.href="cscenter/notice";
+	location.href = "notice";
 }
 function storeguide() {
-	location.href="cscenter/strguide";
+	location.href = "strguide";
 }
 
 var acc = document.getElementsByClassName("accordion");

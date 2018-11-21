@@ -76,7 +76,7 @@ public class AdminController {
 	}
 	@RequestMapping(value = "/order/detail", method = RequestMethod.GET)
 	public String adminOrderDetailGET(@RequestParam("ono") Integer orderNo, Model model) throws Exception { // tb_order.no
-		logger.info("adminOrderGET.......................zz");
+		logger.info("adminOrderDetailGET.......................zz");
 		
 		Map<String, Object> param = service.adminOrderDetail(orderNo);
 		
@@ -117,5 +117,13 @@ public class AdminController {
 		model.addAttribute("pageMaker", pageMaker);
 		
 		return "/admin/faq/adminFaq";
+	}
+	@RequestMapping(value = "/faq/detail", method = RequestMethod.GET)
+	public String adminFaqDetailGET(@RequestParam("no") Integer no, @ModelAttribute("pcr") SearchCriteria pcr, Model model) throws Exception { 
+		logger.info("adminFaqDetailGET.......................zz");
+		
+		model.addAttribute("faqVO", service.adminFaqDetail(no));
+		
+		return "/admin/faq/adminFaqDetail";
 	}
 }

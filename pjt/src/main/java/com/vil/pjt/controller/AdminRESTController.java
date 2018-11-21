@@ -73,12 +73,12 @@ public class AdminRESTController {
 		
 		return entity;
 	}*/
-	@RequestMapping(value = "/faq/{fno}", method = { RequestMethod.PUT, RequestMethod.PATCH })
-	public ResponseEntity<String> modifyReply(@PathVariable("fno") Integer fno, @RequestBody FaqVO vo) {
+	@RequestMapping(value = "/faq/{no}", method = { RequestMethod.PUT, RequestMethod.PATCH })
+	public ResponseEntity<String> modifyReply(@PathVariable("no") Integer no, @RequestBody FaqVO vo) {
 		ResponseEntity<String> entity = null;
 
 		try {
-			vo.setNo(fno);
+			vo.setNo(no);
 			service.modifyFaq(vo);
 			entity = new ResponseEntity<String>("faq modify Success", HttpStatus.OK);
 		} catch (Exception e) {
@@ -89,12 +89,12 @@ public class AdminRESTController {
 		return entity;
 	}
 	
-	@RequestMapping(value = "/faq/{fno}", method = RequestMethod.DELETE )
-	public ResponseEntity<String> removeReply(@PathVariable("fno") Integer fno) {
+	@RequestMapping(value = "/faq/{no}", method = RequestMethod.DELETE )
+	public ResponseEntity<String> removeReply(@PathVariable("no") Integer no) {
 		ResponseEntity<String> entity = null;
 
 		try {
-			service.removeFaq(fno);
+			service.removeFaq(no);
 			entity = new ResponseEntity<String>("faq remove Success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();

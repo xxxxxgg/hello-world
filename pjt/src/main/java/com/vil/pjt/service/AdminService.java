@@ -22,10 +22,12 @@ public interface AdminService {
 	/*
 	 * admin faq
 	 */
+	public FaqVO adminFaqDetail(Integer fno) throws Exception;
 	public List<FaqVO> adminFaqList(SearchCriteria scr) throws Exception;
 	public int adminFaqCount(SearchCriteria scr) throws Exception;
 
 	public void addFaq(FaqVO vo) throws Exception;
 	public void modifyFaq(FaqVO vo) throws Exception;
 	public void removeFaq(Integer fno) throws Exception;
+
 }

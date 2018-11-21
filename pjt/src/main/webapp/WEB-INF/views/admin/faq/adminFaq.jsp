@@ -11,27 +11,15 @@
 <button id="addBtn" style="margin: 20px 20px 20px 20px">FAQ 글쓰기</button>
 
 <!-- ADD Modal ****************************************************************************** -->
-<div id="addModal" class="modal">
+<div id="aModal" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
     <p>FAQ 쓰기</p>
     <div>
-    	제목 : <input type="text" name="title" id="faqtitle"><br><br>
-    	내용 : <textarea name="content" id="faqcontent" row="10" col="200"></textarea><br><br>
+    	제목 : <input type="text" name="title" id="title"><br><br>
+    	내용 : <textarea name="content" id="content" row="10" col="200"></textarea><br><br>
 		<button id="faqAddBtn">ADD FAQ</button>
-    </div>
-  </div>
-</div>
-<div id="addModal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>FAQ 수정</p>
-    <div>
-    	제목 : <input type="text" name="title" id="faqtitle"><br><br>
-    	내용 : <textarea name="content" id="faqcontent" row="10" col="200"></textarea><br><br>
-		<button id="faqModifyBtn">Modify FAQ</button>
     </div>
   </div>
 </div>
@@ -49,19 +37,13 @@
 <c:forEach items="${faqlist}" var="faqVO">
 	<div class="divTableRow">
 		<div class="divTableCell" style="width:60px;">${faqVO.no}</div>
-		<div class="divTableCell"><a href="#" onclick="modify();">${faqVO.title}</a></div>
+		<div class="divTableCell"><a href="/admin/faq/detail?no=${faqVO.no}">${faqVO.title}</a></div>
 		<div class="divTableCell">${faqVO.content}</div>
 		<div class="divTableCell" style="width:110px;"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${faqVO.regdate}" /></div>
+		<div class="divTableCell" style="width:50px;"><button id="faqDeleteBtn">삭제</button></div>
 	</div>
 </c:forEach>
 	</div>
-</div>
-
-
-<div class="blueTable outerTableFooter">
-<div class="tableFootStyle">
-<div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
-</div>
 </div>
 
 <div class="blueTable outerTableFooter">
@@ -89,9 +71,10 @@
 
 <script>
 //Get the modal
-var modal = document.getElementById('addModal');
+var modal = document.getElementById("aModal");
 var btn = document.getElementById("addBtn");
 var span = document.getElementsByClassName("close")[0];
+
 
 btn.onclick = function() {
     modal.style.display = "block";
@@ -108,8 +91,8 @@ window.onclick = function(event) {
 }
 
 $("#faqAddBtn").on("click", function() {
-	var title = $("#faqtitle").val();
-	var content = $("#faqcontent").val();
+	var title = $("#atitle").val();
+	var content = $("#acontent").val();
 	
 	$.ajax({
 		type : 'post',
@@ -131,9 +114,10 @@ $("#faqAddBtn").on("click", function() {
 		}
 	});
 });
-$("#faqModifyBtn").on("click", function() {
-	var title = $("#faqtitle").val();
-	var content = $("#faqcontent").val();
+$("#faqModBtn").on("click", function() {
+	var title = $("#title").val();
+	var content = $("#content").val();
+	var fno = $("#")
 	
 	$.ajax({
 		type : 'post',
@@ -148,12 +132,17 @@ $("#faqModifyBtn").on("click", function() {
 			content : content
 		}),
 		success : function(result) {
-			if(result == 'faq add Success') {
-				alert("FAQ 등록 완료");
+			if(result == 'faq modify Success') {
+				alert("FAQ 수정 완료");
 				location.replace("/admin/faq");
 			}
 		}
 	});
+});
+$("#faqDeleteBtn").on("click", function() {
+	var title = $("#mtitle").val();
+	var content = $("#mcontent").val();
+	var fno = $("#")
 });
 </script>
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>

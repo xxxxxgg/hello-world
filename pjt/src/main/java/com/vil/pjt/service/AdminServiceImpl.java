@@ -56,6 +56,10 @@ public class AdminServiceImpl implements AdminService {
 	 * admin faq **********************************************************************************************************
 	 */
 	@Override
+	public FaqVO adminFaqDetail(Integer fno) throws Exception {
+		return dao.adminFaqSelect(fno);
+	}
+	@Override
 	public List<FaqVO> adminFaqList(SearchCriteria scr) throws Exception {
 		return dao.adminFaqList(scr);
 	}
@@ -79,6 +83,7 @@ public class AdminServiceImpl implements AdminService {
 	public void removeFaq(Integer fno) throws Exception { //REST
 		dao.adminFaqDelete(fno);
 	}
+
 
 
 

@@ -37,6 +37,7 @@ public interface AdminDAO {
 	/*
 	 * admin faq
 	 */
+	public FaqVO adminFaqSelect(Integer fno) throws Exception;
 	public List<FaqVO> adminFaqList(SearchCriteria scr) throws Exception;
 	public int adminFaqCount(SearchCriteria scr) throws Exception;
 
@@ -45,4 +46,5 @@ public interface AdminDAO {
 	public void adminFaqUpdate(FaqVO vo) throws Exception;
 
 	public void adminFaqDelete(Integer fno) throws Exception;
+
 }

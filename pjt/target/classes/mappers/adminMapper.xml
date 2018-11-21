@@ -74,6 +74,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- admin faq************************************************************************************************************************ -->
+	<select id="adminFaqSelect" resultType="FaqVO">
+		select * 
+		from tb_faq
+		where no = #{fno}
+	</select>
 	<select id="adminFaqList" resultType="FaqVO">
 		<![CDATA[
 			select * from tb_faq
@@ -95,7 +100,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	<update id="adminFaqUpdate">
 		update tb_faq set title = #{title}, content = #{content}
-		where no = #{fno}
+		where no = #{no}
 	</update>
 	<delete id="adminFaqDelete">
 		delete from tb_faq where no = #{fno}
