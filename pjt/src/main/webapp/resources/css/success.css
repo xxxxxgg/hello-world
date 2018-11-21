@@ -1,0 +1,35 @@
+/*처음으로 버튼*/
+#submit-button {
+	width : 600px;
+	margin : 10px auto;
+	text-align : center;
+}
+
+button {
+	margin : 0 auto;
+	height : 40px;	
+	width : 100px;
+	
+	background : #4b778c;	
+	color:#fff;
+	border: none;
+	text-decoration: none;
+	font-size: 15px;
+	cursor: pointer;
+	border-radius:10px;
+}
+
+#gotohome {
+	text-decoration: none;
+}
+
+button:hover {
+	background : #5f90a8;
+}
+
+#table-title {
+	color : #5f90a8;
+	text-align : center;
+	padding-top : 220px;
+	margin : 40px auto;
+}

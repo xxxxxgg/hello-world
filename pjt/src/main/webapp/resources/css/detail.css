@@ -1,0 +1,152 @@
+/* product */
+.product_container{
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    margin-bottom: 50px;
+}
+
+/* Columns */
+.left-column {
+    width: 45%;
+    position: relative;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.right-column {
+    width: 35%;
+    margin-top: 60px;
+}  
+   
+/* Left Column */
+.left-column img {
+	width: 350x;
+    height: 480px;
+    position: absolute;
+    left: 50px;
+    top: 20px;
+    transition: all 0.3s ease;
+}
+   
+/* Right Column */
+   
+/* Product Description */
+.product-description {
+    border-bottom: 1px solid #E1E8EE;
+    margin-bottom: 20px;
+}
+.product-description span {
+    font-size: 18px;
+    color: #358ED7;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.product-description h1 {
+    font-weight: 300;
+    font-size: 52px;
+    color: #43484D;
+    letter-spacing: -2px;
+}
+.product-description p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #86939E;
+    line-height: 24px;
+}
+   
+/* Product Configuration */
+.product-color span,
+  .cable-config span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #86939E;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+   
+/* 옵션선택 */
+.cable-choose {
+    margin-bottom: 20px;
+}
+
+.rental_type {
+	border: 2px solid #E1E8EE;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom : 5px;
+    color: #5E6977;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.rental_type input {
+	font-size: 30px;
+}
+ 
+/*구매옵션+수량 영역*/
+.cable-config {
+    border-bottom: 1px solid #E1E8EE;
+    margin-bottom: 20px;
+    padding-bottom : 20px;
+}
+
+/* 가격 */
+.product-price {
+    display: flex;
+    align-items: center;
+}
+.product-price #totalPrice {
+    font-size: 26px;
+    font-weight: 300;
+    color: #43474D;
+    margin-right: 20px;
+}
+.product-price span {
+    font-size: 26px;
+    font-weight: 300;
+    color: #43474D;
+}
+.product-price p {
+    font-size: 26px;
+    font-weight: 300;
+    color: #43474D;
+    margin-right: 20px;
+}
+   
+   
+/* 장바구니버튼 */
+.cart-btn {
+    padding: 12px 30px;
+    display: inline-block;
+    background-color: #87ceeb;
+    font-size: 16px;
+	color: #fff;
+    text-decoration: none;
+    transition: all .5s;
+    margin-left : 20px;
+    border-radius: 10px;
+}
+.cart-btn:hover {
+    background-color: #64af3d;
+}
+
+   
+/* 상세이미지 */
+.des_container{
+    width: 50%;
+    height: auto;
+}
+.des_box {
+    width: 96%;
+    height: auto;
+    position: relative;
+    margin-left: 45%;
+}
+.des_box img{
+    width: 100%;
+    height: 100%;
+}
+
+
