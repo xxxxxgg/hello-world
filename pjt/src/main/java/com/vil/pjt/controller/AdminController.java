@@ -34,6 +34,9 @@ public class AdminController {
 		return "/admin/adminMain";
 	}
 	
+	/*
+	 * admin login ***************************************************************************************************************
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String adminLoginGET() {
 		logger.info("adminLoginGET.......................zz");
@@ -52,7 +55,11 @@ public class AdminController {
 		
 		model.addAttribute("adminVO", vo);
 	}
+	/**/
 	
+	/*
+	 * admin order ***************************************************************************************************************
+	 */
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
 	public String adminOrderGET(@ModelAttribute("pcr") SearchCriteria pcr, Model model) throws Exception {
 		logger.info("adminOrderGET.......................zz");
@@ -69,7 +76,7 @@ public class AdminController {
 	}
 	@RequestMapping(value = "/order/detail", method = RequestMethod.GET)
 	public String adminOrderDetailGET(@RequestParam("ono") Integer orderNo, Model model) throws Exception { // tb_order.no
-		logger.info("adminOrderGET.......................zz");
+		logger.info("adminOrderDetailGET.......................zz");
 		
 		Map<String, Object> param = service.adminOrderDetail(orderNo);
 		
@@ -81,25 +88,42 @@ public class AdminController {
 
 		return "/admin/order/adminOrderDetail";
 	}
-	@RequestMapping(value = "/order/q", method = RequestMethod.POST)
-	public String adminOrderUpdatePOST(@RequestParam("ono") Integer orderNo, Model model) throws Exception { // tb_order.no
-		logger.info("adminOrderGET.......................zz");
-		
-		Map<String, Object> param = service.adminOrderDetail(orderNo);
-		
-		//model.addAttribute("orderDetail", service.adminOrderRead());
-		
-		model.addAttribute("orderinfo", param.get("orderinfo"));
-		model.addAttribute("ordereditemList", param.get("ordereditemList"));
-		model.addAttribute("memberinfo", param.get("memberinfo"));
-
-		return "/admin/order/adminOrderDetail";
-	}
+	/**/
 	
+	/*
+	 * admin member ****************************************************************************************************************
+	 */
 	@RequestMapping(value = "/member", method = RequestMethod.GET)
 	public String adminMemberGET(@ModelAttribute("pcr") SearchCriteria pcr, Model model) throws Exception {
-		logger.info("adminOrderGET.......................zz");
+		logger.info("adminMemberGET.......................zz");
 		
-		return "/admin/adminMember";
+		return "/admin/member/adminMember";
+	}
+	/**/
+	
+	/*
+	 * admin faq ****************************************************************************************************************
+	 */
+	@RequestMapping(value = "/faq", method = RequestMethod.GET)
+	public String adminFaqGET(@ModelAttribute("pcr") SearchCriteria pcr, Model model) throws Exception { 
+		logger.info("adminFaqGET.......................zz");
+		
+		model.addAttribute("faqlist", service.adminFaqList(pcr));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setPcr(pcr);
+		pageMaker.setTotalCount(service.adminFaqCount(pcr));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		return "/admin/faq/adminFaq";
+	}
+	@RequestMapping(value = "/faq/detail", method = RequestMethod.GET)
+	public String adminFaqDetailGET(@RequestParam("no") Integer no, @ModelAttribute("pcr") SearchCriteria pcr, Model model) throws Exception { 
+		logger.info("adminFaqDetailGET.......................zz");
+		
+		model.addAttribute("faqVO", service.adminFaqDetail(no));
+		
+		return "/admin/faq/adminFaqDetail";
 	}
 }

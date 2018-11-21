@@ -1,82 +1,106 @@
 package com.vil.pjt.controller;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vil.pjt.domain.SampleVO;
-import com.vil.pjt.service.SampleService;
+import com.vil.pjt.domain.FaqVO;
+import com.vil.pjt.service.AdminService;
 
 @RestController
 @RequestMapping("/admin")
 public class AdminRESTController {
 	@Inject
-	private SampleService service;
+	private AdminService service;
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ResponseEntity<List<SampleVO>> selectSample(@RequestBody SampleVO vo) {
-		ResponseEntity<List<SampleVO>> entity = null;
-
-		try {
-			entity = new ResponseEntity<>(service.listAll(), HttpStatus.OK);
-		} catch (Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
-
-		return entity;
-	}
-
-	@RequestMapping(value = "/reply/all", method = RequestMethod.GET)
-	public ResponseEntity<List<SampleVO>> replyall() {
-		ResponseEntity<List<SampleVO>> entity = null;
+	@RequestMapping(value = "/faq/new", method = RequestMethod.POST)
+	public ResponseEntity<String> registerFaq(@RequestBody FaqVO vo) {
+		ResponseEntity<String> entity = null;
 
 		try {
-			entity = new ResponseEntity<>(service.listAll(), HttpStatus.OK);
+			service.addFaq(vo);
+			entity = new ResponseEntity<>("faq add Success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 
 		return entity;
 	}
 	
-	@RequestMapping(value = "/tran", method = RequestMethod.GET)
-	public ResponseEntity<String> tran() {
-		ResponseEntity<String> entity = null;
-		SampleVO vo = new SampleVO();
-		
-		vo.setMid("tranuser1");
-		vo.setMpw("tranuser1");
-		vo.setMname("tranuser1");
-		vo.setMemail("tranuser1");
-		
+/*	@ResponseBody
+	@RequestMapping(value = "/all/{bno}", method = RequestMethod.GET)
+	public ResponseEntity<List<FaqVO>> listReplyAll(@PathVariable("bno") Integer bno) {
+		ResponseEntity<List<FaqVO>> entity = null;
+		System.out.println("dfdfdfdfd");
 		try {
-			service.addTransaction(vo);
-			entity = new ResponseEntity<>("tran success", HttpStatus.OK);
+			entity = new ResponseEntity<>(service.listReplyAll(bno), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+		
+		return entity;
+	}*/	
+	/*@RequestMapping(value = "/{fno}/{pageNum}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String, Object>> listReplyPage(@PathVariable("fno") Integer fno, @ModelAttribute("pcr") SearchCriteria pcr) {
+		ResponseEntity<Map<String, Object>> entity = null;
+		
+		try {
+			Map<String, Object> map = new HashMap<>();
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setPcr(pcr);
+			pageMaker.setTotalCount(service.adminFaqCount(pcr));
+			
+			//cri.setPageNum(pageNum);
+			List<FaqVO> faqlist = service.adminFaqList(pcr);
+			
+			map.put("faqlist", faqlist);
+			
+			map.put("pageMaker", pageMaker);
+			
+			entity = new ResponseEntity<>(map, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}*/
+	@RequestMapping(value = "/faq/{no}", method = { RequestMethod.PUT, RequestMethod.PATCH })
+	public ResponseEntity<String> modifyReply(@PathVariable("no") Integer no, @RequestBody FaqVO vo) {
+		ResponseEntity<String> entity = null;
+
+		try {
+			vo.setNo(no);
+			service.modifyFaq(vo);
+			entity = new ResponseEntity<String>("faq modify Success", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
 
 		return entity;
 	}
+	
+	@RequestMapping(value = "/faq/{no}", method = RequestMethod.DELETE )
+	public ResponseEntity<String> removeReply(@PathVariable("no") Integer no) {
+		ResponseEntity<String> entity = null;
 
-	/*
-	 * @RequestMapping(value = "/reply/all", method = RequestMethod.GET) public
-	 * List<SampleVO> replyall() { List<SampleVO> list = new ArrayList<>(); for
-	 * (int i = 0; i < 10; i++) { SampleVO vo = new SampleVO(); vo.setId("id" +
-	 * i); vo.setPw("pw" + i); vo.setName("name" + i); vo.setEmail("email" + i);
-	 * 
-	 * list.add(vo); }
-	 * 
-	 * return list; }
-	 */
+		try {
+			service.removeFaq(no);
+			entity = new ResponseEntity<String>("faq remove Success", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
+	}
 }

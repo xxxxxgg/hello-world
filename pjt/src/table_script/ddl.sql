@@ -68,21 +68,21 @@ CREATE TABLE tb_order
 ALTER TABLE tb_order ADD CONSTRAINT FK_tb_order_mno_tb_member2_no FOREIGN KEY (mno)
  REFERENCES tb_member2 (no)  ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-ALTER TABLE tb_ordereditem ADD CONSTRAINT FK_tb_ordereditem_tb_order_no_tb_order_no FOREIGN KEY (tb_order_no)
- REFERENCES tb_order (no)  ON DELETE RESTRICT ON UPDATE RESTRICT;
-
 drop table tb_order;
 drop table tb_ordereditem;
 
 CREATE TABLE tb_ordereditem
 (
-    `no`           INT    NOT NULL    AUTO_INCREMENT, 
-    `tb_order_no`  INT    NOT NULL, 
-    `item_no`      INT    NOT NULL, 
-    `count`        INT    NOT NULL, 
-    `totalprice`   INT    NOT NULL, 
+    `no`          INT    NOT NULL    AUTO_INCREMENT, 
+    `order_no`    INT    NOT NULL, 
+    `item_no`     INT    NOT NULL, 
+    `count`       INT    NOT NULL, 
+    `totalprice`  INT    NOT NULL, 
     PRIMARY KEY (no)
 );
+
+ALTER TABLE tb_ordereditem ADD CONSTRAINT FK_tb_ordereditem_order_no_tb_order_no FOREIGN KEY (order_no)
+ REFERENCES tb_order (no)  ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE tb_itemcart
 (
@@ -103,7 +103,7 @@ select tb_order.no, tb_member2.id, tb_order.totalprice
 from tb_order
 inner join tb_member2 on tb_order.mno = tb_member2.no;
 
-update tb_order set state = '배송완료' where no = 3;
+update tb_order set state = '�����' where no = 3;
 update tb_ordereditem set totalprice = 20000 where no = 1;
 
 INSERT INTO tb_order (state, mno, comment, totalprice) VALUES ('state 01', 01, 'comment 01', 1000);
@@ -117,13 +117,13 @@ INSERT INTO tb_order (state, mno, comment, totalprice) VALUES ('state 08', 02, '
 INSERT INTO tb_order (state, mno, orderdate, comment, totalprice) VALUES ('state 09', 09, 'orderdate 09', 'comment 09', 09);
 INSERT INTO tb_order (state, mno, orderdate, comment, totalprice) VALUES ('state 10', 10, 'orderdate 10', 'comment 10', 10);
 
-INSERT INTO tb_ordereditem (tb_order_no, item_no, count, totalprice) VALUES (01, 01, 01, 1000);
-INSERT INTO tb_ordereditem (tb_order_no, item_no, count, totalprice) VALUES (01, 02, 02, 2000);
-INSERT INTO tb_ordereditem (tb_order_no, item_no, count, totalprice) VALUES (01, 03, 03, 3000);
-INSERT INTO tb_ordereditem (tb_order_no, item_no, count, totalprice) VALUES (01, 04, 02, 4000);
-INSERT INTO tb_ordereditem (tb_order_no, item_no, count, totalprice) VALUES (01, 05, 05, 5000);
-INSERT INTO tb_ordereditem (tb_order_no, item_no, count, totalprice) VALUES (01, 06, 02, 6000);
-INSERT INTO tb_ordereditem (tb_order_no, item_no, count, totalprice) VALUES (02, 07, 07, 07);
-INSERT INTO tb_ordereditem (tb_order_no, item_no, count, totalprice) VALUES (02, 08, 08, 08);
-INSERT INTO tb_ordereditem (tb_order_no, item_no, count, totalprice) VALUES (09, 09, 09, 09);
-INSERT INTO tb_ordereditem (tb_order_no, item_no, count, totalprice) VALUES (10, 10, 10, 10);
+INSERT INTO tb_ordereditem (order_no, item_no, count, totalprice) VALUES (01, 01, 01, 1000);
+INSERT INTO tb_ordereditem (order_no, item_no, count, totalprice) VALUES (01, 02, 02, 2000);
+INSERT INTO tb_ordereditem (order_no, item_no, count, totalprice) VALUES (01, 03, 03, 3000);
+INSERT INTO tb_ordereditem (order_no, item_no, count, totalprice) VALUES (01, 04, 02, 4000);
+INSERT INTO tb_ordereditem (order_no, item_no, count, totalprice) VALUES (01, 05, 05, 5000);
+INSERT INTO tb_ordereditem (order_no, item_no, count, totalprice) VALUES (01, 06, 02, 6000);
+INSERT INTO tb_ordereditem (order_no, item_no, count, totalprice) VALUES (02, 07, 07, 07);
+INSERT INTO tb_ordereditem (order_no, item_no, count, totalprice) VALUES (02, 08, 08, 08);
+INSERT INTO tb_ordereditem (order_no, item_no, count, totalprice) VALUES (09, 09, 09, 09);
+INSERT INTO tb_ordereditem (order_no, item_no, count, totalprice) VALUES (10, 10, 10, 10);

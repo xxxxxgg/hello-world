@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.vil.pjt.domain.AdminVO;
+import com.vil.pjt.domain.FaqVO;
 import com.vil.pjt.domain.OrderVO;
 import com.vil.pjt.domain.OrderedItemVO;
 import com.vil.pjt.dto.AdminLoginDTO;
@@ -26,6 +27,9 @@ public class AdminServiceImpl implements AdminService {
 		return dao.adminLogin(dto);
 	}
 
+	/*
+	 * admin order ******************************************************************************************
+	 */
 	@Override
 	public List<OrderVO> adminOrderList(SearchCriteria scr) throws Exception {
 		return dao.adminOrderList(scr);
@@ -47,6 +51,39 @@ public class AdminServiceImpl implements AdminService {
 	public int adminOrderCount(SearchCriteria scr) throws Exception {
 		return dao.adminOrderCount(scr);
 	}
+
+	/*
+	 * admin faq **********************************************************************************************************
+	 */
+	@Override
+	public FaqVO adminFaqDetail(Integer fno) throws Exception {
+		return dao.adminFaqSelect(fno);
+	}
+	@Override
+	public List<FaqVO> adminFaqList(SearchCriteria scr) throws Exception {
+		return dao.adminFaqList(scr);
+	}
+
+	@Override
+	public int adminFaqCount(SearchCriteria scr) throws Exception {
+		return dao.adminFaqCount(scr);
+	}
+
+	@Override
+	public void addFaq(FaqVO vo) throws Exception { //REST
+		dao.adminFaqInsert(vo);
+	}
+
+	@Override
+	public void modifyFaq(FaqVO vo) throws Exception { //REST
+		dao.adminFaqUpdate(vo);
+	}
+
+	@Override
+	public void removeFaq(Integer fno) throws Exception { //REST
+		dao.adminFaqDelete(fno);
+	}
+
 
 
 

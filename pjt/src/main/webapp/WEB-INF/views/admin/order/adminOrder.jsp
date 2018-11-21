@@ -14,11 +14,6 @@
 	<select name="searchType">
 		<option value="NONE" <c:out value="${pcr.searchType == null?'selected':'' }"/>>NONE</option>
 		<option value="ORDER_NO" <c:out value="${pcr.searchType eq 'ORDER_NO'?'selected':'' }"/>>ORDER_NO</option>
-		<option value="CONTENT" <c:out value="${pcr.searchType eq 'CONTENT'?'selected':'' }"/>>Content</option>
-		<option value="WIRTER" <c:out value="${pcr.searchType eq 'WIRTER'?'selected':'' }"/>>Writer</option>
-		<option value="TITLE_CONTENT" <c:out value="${pcr.searchType eq 'TITLE_CONTENT'?'selected':'' }"/>>Title OR Content</option>
-		<option value="CONTENT_WRITER" <c:out value="${pcr.searchType eq 'CONTENT_WRITER'?'selected':'' }"/>>Content OR Writer</option>
-		<option value="TITLE_CONTENT_WRITER" <c:out value="${pcr.searchType eq 'TITLE_CONTENT_WRITER'?'selected':'' }"/>>Title OR Content OR Writer</option>
 	</select>
 	
 	<input type="text" name="keyword" id="keywordInput" value="${pcr.keyword }">
@@ -51,13 +46,6 @@
 	</div>
 </div>
 
-
-<div class="blueTable outerTableFooter">
-<div class="tableFootStyle">
-<div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
-</div>
-</div>
-
 <div class="blueTable outerTableFooter">
 <div class="tableFootStyle">
 <div class="links">
@@ -75,6 +63,7 @@
 		<c:if test="${pageMaker.next }">
 			<a href="order${pageMaker.makeSearch(pageMaker.endPage + 1) }">&raquo;</a>
 		</c:if>
+		
 </div>
 </div>
 </div>

@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where id = #{id} and pw = #{pw}
 	</select>
 	
+	<!-- admin order******************************************************************************************************* -->
 	<select id="adminOrderSelect" resultType="OrderVO">
 		select * 
 		from tb_order
@@ -65,11 +66,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
+	<!-- admin member********************************************************************************************************************** -->
 	<select id="adminMemberSelect" resultType="AdminVO">
 		select * 
 		from tb_member2
 		where no = #{mno}
 	</select>
+	
+	<!-- admin faq************************************************************************************************************************ -->
+	<select id="adminFaqSelect" resultType="FaqVO">
+		select * 
+		from tb_faq
+		where no = #{fno}
+	</select>
+	<select id="adminFaqList" resultType="FaqVO">
+		<![CDATA[
+			select * from tb_faq
+			where no > 0			
+			order by no desc
+			limit #{pageStart}, #{pageSize}
+		]]>
+	</select>
+	<select id="adminFaqCount" resultType="int">
+		<![CDATA[
+			select count(*) 
+			from tb_faq
+			where no > 0
+		]]>
+	</select>
+	<insert id="adminFaqInsert">
+		insert into tb_faq(title, content)
+		values(#{title}, #{content})
+	</insert>
+	<update id="adminFaqUpdate">
+		update tb_faq set title = #{title}, content = #{content}
+		where no = #{no}
+	</update>
+	<delete id="adminFaqDelete">
+		delete from tb_faq where no = #{fno}
+	</delete>
 	
 	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 														TEST

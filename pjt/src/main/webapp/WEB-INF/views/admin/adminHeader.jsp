@@ -33,6 +33,7 @@
 		<li><a href="/admin/order">주문관리</a></li>
 		<li><a href="/admin/member">회원관리</a></li>
 		<li><a href="/admin/seller">판매자관리</a></li>
+		<li><a href="/admin/faq">FAQ관리</a></li>
 	</ul>
 </div>
 <hr>
