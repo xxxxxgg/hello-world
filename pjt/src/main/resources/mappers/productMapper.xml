@@ -5,16 +5,20 @@
 <mapper namespace="com.vil.pjt.mapper.ProductMapper">
 	
 	<select id="read" resultType="com.vil.pjt.domain.ProductVO">
-		select product_id, product_name, category, priceforweek, priceformonth, pricefornew, mainimg, detailimg
+		select product_id, product_name, category, priceforweek, priceformonth, pricefornew, mainimg, detailimg, msg
 		from product
 		where product_id = #{product_id}
 	</select>
 	
 	<select id="listAll" resultType="com.vil.pjt.domain.ProductVO">
-		select product_id, product_name, category, priceforweek, priceformonth, pricefornew, mainimg, detailimg
+		select product_id, product_name, category, priceforweek, priceformonth, pricefornew, mainimg, detailimg, msg
 		from product
 	</select>
 	
+	<insert id="requestCreate">
+	insert into product_request (request_type, request_model, request_phone, request_msg)
+	values (#{request_type}, #{request_model}, #{request_phone}, #{request_msg})
+	</insert>
 	
 	
 </mapper>

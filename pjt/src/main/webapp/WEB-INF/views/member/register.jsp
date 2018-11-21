@@ -49,12 +49,9 @@
 						<input type="button" value ="중복확인" id="user_id_checkBtn" onclick="checkBtn_click();">
 						<script>
 							var ckId = 0;
-							
 							function checkBtn_click(){
-								
 								var userId = $("#memberid").val();
 								var userData = {"id" : userId};
-								
 								if(userId.length < 1 ) {
 									alert("아이디를 입력해 주세요.");	
 								} else {
@@ -164,6 +161,6 @@
 			} 
 		}
 	</script>
-	
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -1,11 +1,17 @@
 package com.vil.pjt.domain;
 
+import java.util.Date;
+
 public class OrderedItemVO {
     private Integer no;
     private Integer order_no; 
     private Integer item_no;
     private Integer count;
     private Integer totalprice;
+    private String rentaltype;
+    private Date startdate;
+    private Date enddate;
+    
 
     public Integer getNo() {
         return no;
@@ -13,7 +19,25 @@ public class OrderedItemVO {
     public void setNo(Integer no) {
         this.no = no;
     }
-    public Integer getOrder_no() {
+    public String getRentaltype() {
+		return rentaltype;
+	}
+	public void setRentaltype(String rentaltype) {
+		this.rentaltype = rentaltype;
+	}
+	public Date getStartdate() {
+		return startdate;
+	}
+	public void setStartdate(Date startdate) {
+		this.startdate = startdate;
+	}
+	public Date getEnddate() {
+		return enddate;
+	}
+	public void setEnddate(Date enddate) {
+		this.enddate = enddate;
+	}
+	public Integer getOrder_no() {
 		return order_no;
 	}
 	public void setOrder_no(Integer order_no) {

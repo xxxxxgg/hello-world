@@ -27,7 +27,6 @@
 				<td id="title">1개월가격</th>
 				<td id="title">새상품가격</th>
 				<td id="title">메인사진</th>
-				<td id="title">상세사진</th>
 			</tr>
 			<c:forEach items="${list}" var="productVO">
 				<tr>

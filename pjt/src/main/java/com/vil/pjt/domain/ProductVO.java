@@ -17,6 +17,16 @@ public class ProductVO {
 	private String mainimg;
 	
 	private String detailimg;
+	
+	private String msg;
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
 
 	public Integer getProduct_id() {
 		return product_id;

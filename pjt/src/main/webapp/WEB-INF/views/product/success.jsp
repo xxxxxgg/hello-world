@@ -24,6 +24,6 @@
 			</div>
 		</form>
 	</div>
-
+	<jsp:include page="../member/footer.jsp"></jsp:include>
 </body>
 </html>

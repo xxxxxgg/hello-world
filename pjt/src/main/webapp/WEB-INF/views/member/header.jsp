@@ -20,10 +20,9 @@
 		<div id="subheader">
 			<nav class="container">
 				<!-- <p>The Village</p> -->
-				<a href="/order/cart" class = "heaer_link">장바구니</a>
-				
+				<a href="/member/usedSeller" class = "heaer_link">제휴업체</a>
+				<a href="/product/cart" class = "heaer_link">장바구니</a>
 				<a href="/member/mypage" class = "heaer_link">마이페이지</a>
-
 				<c:if test = "${login.id == null}">
 					<a href="/member/register" class = "heaer_link">회원가입</a>
 				</c:if>
@@ -64,7 +63,7 @@
 				<a href="#">패션/뷰티</a><span id="gubun">|</span>
 				<a href="#">리빙</a><span id="gubun">|</span>
 				<a href="#">반려동물</a><span id="gubun">|</span>
-				<a href="#">중고판매관</a>
+				<a href="/product/sell">제품요청</a>
 			</nav>
 		</div>
 	</div>

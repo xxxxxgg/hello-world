@@ -47,7 +47,7 @@
 
         <div class="container">
             <div id="heading-block">
-                <h2>Category</h2>
+                <h2>New Arrival</h2>
             </div>
             <!-- first box -->
             <a href="#">
@@ -177,7 +177,6 @@
         </div>
 
     </div>
-
 </body>
 
 </html>

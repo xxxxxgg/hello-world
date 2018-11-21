@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.vil.pjt.domain.ProRequestVO;
 import com.vil.pjt.domain.ProductVO;
 
 @Repository
@@ -25,6 +26,11 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public List<ProductVO> listAll() throws Exception {
 		return session.selectList(namespace + ".listAll");
+	}
+
+	@Override
+	public void requestCreate(ProRequestVO vo) throws Exception {
+		session.insert(namespace + ".requestCreate", vo);
 	}
 
 }

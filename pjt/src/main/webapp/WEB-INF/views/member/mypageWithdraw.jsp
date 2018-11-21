@@ -23,6 +23,7 @@
 			<div id="mypage-sub-title"><a href="/member/mypageEdit">회원정보수정</a></div>
 			<div id="mypage-sub-title"><a href="/order/mypageOrderList">주문내역</a></div>
 			<div id="mypage-sub-title"><a href="/member/mypageWithdraw">회원탈퇴</a></div>
+			<div id="mypage-sub-title"><a href="/member/mypageTicket">이용권</a></div>
 		</div>
 		
 		<form id ="registerform" method="post">
@@ -60,6 +61,7 @@
 			</div>
 		</form>
 	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 	<script>
 		function submitBtn_click(e){
@@ -78,4 +80,5 @@
 			
 		}
 	</script>
+	
 </html>

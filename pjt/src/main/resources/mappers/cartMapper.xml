@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vil.pjt.mapper.CartMapper">
+	
+	<insert id="create">
+	insert into cart(member_id, product_id, quantity, rental_type, price)
+	values(#{member_id}, #{product_id}, #{quantity}, #{rental_type}, #{price})
+	</insert>
+	
+	<select id="read" resultType="com.vil.pjt.domain.CartVO">
+	select cart_id, member_id, product.product_id, product.product_name, product.mainimg, quantity, rental_type, price
+	from cart, member, product
+	where cart_id = #{cart_id} 
+	and cart.product_id = product.product_id
+	and member.id = cart.member_id
+	</select>
+	
+	<update id="update">
+	update cart 
+	set member_id = #{member_id}, product_id = #{product_id},  quantity = #{quantity},  rental_type = #{rental_type},  price = #{price}
+	where cart_id = #{cart_id}
+	</update>
+	
+	<delete id="delete">
+	delete from cart where cart_id = #{cart_id}
+	
+	</delete>
+	
+	<select id="listAll" resultType="com.vil.pjt.domain.CartVO">
+	select cart_id, member_id, product.product_id, product.product_name, product.mainimg, quantity, rental_type, price
+	from cart, member, product
+	where member_id = #{member_id} 
+	and cart.product_id = product.product_id
+	and member.id = cart.member_id
+	order by cart_id
+	</select>
+
+	
+</mapper>
+
+
+

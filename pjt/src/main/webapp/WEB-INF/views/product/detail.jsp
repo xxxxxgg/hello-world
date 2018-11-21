@@ -18,7 +18,7 @@
 <body>
 	<jsp:include page="../member/header.jsp"></jsp:include>
 	
-	<form id ="registerform" method="post">
+	<form id ="cartform" method="post">
 	<div class="product_container">
 	    <!-- Left Column -->
 	    <div class="left-column">
@@ -29,7 +29,7 @@
 	        <div class="product-description">
 	            <span>${productVO.category}</span>
 	            <h1>${productVO.product_name}</h1>
-	            <p>굉장히 편안합니다!</p>
+	            <p>${productVO.msg}</p>
 	        </div>
 	
 		
@@ -38,25 +38,59 @@
 		        <span>구매 옵션</span>
 		
 		        <div class="cable-choose">
-			        <div class="rental_type"><input type="radio" name="rental_type"  id="week" value="M" > 1주 렌탈</div>
-			        <div class="rental_type"><input type="radio" name="rental_type"  id="month" value="M"> 1개월 렌탈</div>
-			        <div class="rental_type"><input type="radio" name="rental_type"  id="newpro" value="M"> 새상품 렌탈</div>
+			        <div class="rental_type"><input type="radio" name="rental_type"  id="week" value="1주"> 1주 렌탈</div>
+			        <div class="rental_type"><input type="radio" name="rental_type"  id="month" value="1개월"> 1개월 렌탈</div>
+			        <div class="rental_type"><input type="radio" name="rental_type"  id="newpro" value="새상품(1개월)"> 새상품 렌탈</div>
 		        </div>
 		        <div class="quantity">
 		        	<span>수량 : </span>
-	                <input id="pro_quantity" type="number" value="1" min="1" max="5" />
+	                <input id="pro_quantity" name="quantity" type="number" value="1" min="1" max="5" />
+	                <input type=button value="+" id="plus" onClick="javascript:this.form.pro_quantity.value++;">
+					<input type=button value="-" id="minus" onClick="javascript:this.form.pro_quantity.value--;">
 		        </div>	
 		    </div>
-			<script type="text/javascript">         
-            document.getElementById("week").onclick = function() { 
-    			document.getElementById("show").innerText = "${productVO.priceforweek}";
+			<script type="text/javascript">
+			
+			document.getElementById("week").onclick = function() { 
+    			document.getElementById("show").innerText = "${productVO.priceforweek}"*$("#pro_quantity").val();
     		}
             document.getElementById("month").onclick = function() { 
-    			document.getElementById("show").innerText = "${productVO.priceformonth}";
+    			document.getElementById("show").innerText = "${productVO.priceformonth}"*$("#pro_quantity").val();
     		}
             document.getElementById("newpro").onclick = function() { 
-    			document.getElementById("show").innerText = "${productVO.pricefornew}";
-    		}
+    			document.getElementById("show").innerText = "${productVO.pricefornew}"*$("#pro_quantity").val();
+    		} 
+            document.getElementById("plus").onclick = function() { 
+            	var text = document.getElementById("pro_quantity"); // 폼 선택
+            	text_val = parseInt(text.value); // 폼 값을 숫자열로 변환
+            	text_val += 1; // 계산
+           		text.value = text_val; 
+				if($("#week").prop("checked")){
+	           		document.getElementById("show").innerText = "${productVO.priceforweek}"*$("#pro_quantity").val();
+				}
+				if($("#month").prop("checked")){
+	           		document.getElementById("show").innerText = "${productVO.priceformonth}"*$("#pro_quantity").val();
+				}
+				if($("#newpro").prop("checked")){
+	           		document.getElementById("show").innerText = "${productVO.pricefornew}"*$("#pro_quantity").val();
+				}
+    		}   
+            document.getElementById("minus").onclick = function() { 
+            	var text = document.getElementById("pro_quantity"); // 폼 선택
+            	text_val = parseInt(text.value); // 폼 값을 숫자열로 변환
+            	text_val -= 1; // 계산
+           		text.value = text_val; 
+				if($("#week").prop("checked")){
+	           		document.getElementById("show").innerText = "${productVO.priceforweek}"*$("#pro_quantity").val();
+				}
+				if($("#month").prop("checked")){
+	           		document.getElementById("show").innerText = "${productVO.priceformonth}"*$("#pro_quantity").val();
+				}
+				if($("#newpro").prop("checked")){
+	           		document.getElementById("show").innerText = "${productVO.pricefornew}"*$("#pro_quantity").val();
+				}
+    		}  
+            
        		</script>
 			<div class="product-price">
 		    	<span>￦</span>
@@ -73,7 +107,9 @@
 			if (($("#week").prop("checked") == false) && ($("#month").prop("checked") == false) && ($("#newpro").prop("checked") == false)) {
 				alert("렌탈 옵션을 선택해 주세요.");	
 				e.preventDefault();
-			}
+			} 
+					
+			
 		}
 	</script>
 

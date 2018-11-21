@@ -24,6 +24,7 @@
 			<div id="mypage-sub-title"><a href="/member/mypageEdit">회원정보수정</a></div>
 			<div id="mypage-sub-title"><a href="/order/mypageOrderList">주문내역</a></div>
 			<div id="mypage-sub-title"><a href="/member/mypageWithdraw">회원탈퇴</a></div>
+			<div id="mypage-sub-title"><a href="/member/mypageTicket">이용권</a></div>			
 		</div>
 			<table id="tableTest">
 				<tr>
@@ -37,45 +38,54 @@
 					<td id="title">주문상태</th>
 					<td id="title">주문일자</th>
 				</tr>		
-				<c:forEach items="${orderList}" var="orderList">
+				<c:forEach items="${orderList2}" var="orderList2">
 				<tr>
-					<td class="gubun">${orderList.order_id}</td>
-					<td>${orderList.product_name}</td>
-					<td><fmt:formatNumber value="${orderList.price}" pattern="###,###,###"/></td>
-					<td>${orderList.rental_type}</td>
-					<td><fmt:formatDate value="${orderList.startdate}" type="date" dateStyle="medium"/></td>
-					<td><fmt:formatDate value="${orderList.enddate}" type="date" dateStyle="medium"/></td>
-					<td class="total"><fmt:formatNumber value="${orderList.total_price}" pattern="###,###,###"/></td>
-					<td class="state">${orderList.state}</td>
-					<td><fmt:formatDate value="${orderList.orderdate}" type="date" dateStyle="medium"/></td>
+					<td class="gubun">${orderList2.order_id}</td>
+					<td>${orderList2.product_name}</td>
+					<td><fmt:formatNumber value="${orderList2.price}" pattern="###,###,###"/></td>
+					<td>${orderList2.rental_type}</td>
+					<td><fmt:formatDate value="${orderList2.startdate}" type="date" dateStyle="medium"/></td>
+					<td><fmt:formatDate value="${orderList2.enddate}" type="date" dateStyle="medium"/></td>
+					<td class="total"><fmt:formatNumber value="${orderList2.total_price}" pattern="###,###,###"/></td>
+					<td class="state">${orderList2.state}</td>
+					<td class="orderdate"><fmt:formatDate value="${orderList2.orderdate}" type="date" dateStyle="medium"/></td>
 				</tr>
 				</c:forEach>			
 			</table>
 		</div>
 	<script language="javascript">
 	
-	//주문상태
-	$(function(){
+	function rowspan(item) {
 		var row = $("#tableTest tr:last");
-		var cursorObj = row.children('.state');
+		var cursorObj = row.children(item);
 		var value = $(cursorObj).html();
-		var groupCount = 1;
 		  
+		var groupCount = 1;
 		do {
-			if ((value == row.prev().children('.state').html())) {
+			if ((value == row.prev().children(item).html())) {
 				if (row.children().first().html() == row.prev().children().first().html()) {
 					cursorObj.remove();
 					groupCount++;
+				} else {
+					value = row.prev().children(item).html();
+					cursorObj.attr("rowspan", groupCount );
+					groupCount = 1;
 				}
-			}
-			else {
-				value = row.prev().children('.state').html();
+			} else {
+				value = row.prev().children(item).html();
 				cursorObj.attr("rowspan", groupCount );
 				groupCount = 1;
 			}
+			
 			row = row.prev();
-			cursorObj = row.children('.state');
+			cursorObj = row.children(item);
 		} while(row.length !=0 );
+	}
+	$(function(){
+		//주문상태
+		rowspan('.state');
+		rowspan('.total');
+		rowspan('.orderdate');
 	});
 	
 	//주문번호
@@ -100,51 +110,11 @@
 		} while(row.length !=0 );
 	});
 	
-	//주문일자
-	$(function(){
-		var row = $("#tableTest tr:last");
-		var cursorObj = row.children().last();
-		var value = $(cursorObj).html();
-		var groupCount = 1;
-		  
-		do {
-			if (value == row.prev().children().last().html()) {
-				cursorObj.remove();
-				groupCount++;
-			}
-			else {
-				value = row.prev().children().last().html();
-				cursorObj.attr("rowspan", groupCount );
-				groupCount = 1;
-			}
-			row = row.prev();
-			cursorObj = row.children().last();
-		} while(row.length !=0 );
-	});
 	
-	//주문총액
-	$(function(){
-		var row = $("#tableTest tr:last");
-		var cursorObj = row.children('.total');
-		var value = $(cursorObj).html();
-		var groupCount = 1;
-		  
-		do {
-			if (value == row.prev().children('.total').html()) {
-				cursorObj.remove();
-				groupCount++;
-			}
-			else {
-				value = row.prev().children('.total').html();
-				cursorObj.attr("rowspan", groupCount );
-				groupCount = 1;
-			}
-			row = row.prev();
-			cursorObj = row.children('.total');
-		} while(row.length !=0 );
-	});
+	
 	
 	
 	</script>	
+	<jsp:include page="../member/footer.jsp"></jsp:include>
 </body>
 </html>

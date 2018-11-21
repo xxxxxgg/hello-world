@@ -19,5 +19,6 @@
 	<script type="text/javascript">
 		self.location = "/member/mypage";
 	</script>	
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

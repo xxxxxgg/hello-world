@@ -33,4 +33,73 @@
 	</delete>
 	
 	
+	
+	<!-- 이용권 -->
+	<insert id="ticketCreate">
+		insert into ticket(member_id, rental_type, count) 
+		values(#{member_id}, #{rental_type}, #{count})
+	</insert>
+	
+	<select id="ticketRead" resultType="com.vil.pjt.domain.TicketVO">
+		select ticket_id, member_id, rental_type, count
+		from ticket
+		where member_id=#{member_id}
+	</select>
+	
+	<select id="ticketReadOne" resultType="com.vil.pjt.domain.TicketVO">
+		select ticket_id, member_id, rental_type, count
+		from ticket
+		where ticket_id=#{ticket_id}
+	</select>
+	
+	<select id="ticketCount" resultType="int">
+		select count(ticket_id)
+		from ticket
+		where member_id = #{member_id}
+	</select>
+	
+	<select id="ticketMin" resultType="int">
+		select min(ticket_id)
+		from ticket
+		where member_id=#{member_id}
+	</select>
+	
+	<update id="ticketEdit">
+		update ticket set count = #{count}
+		where ticket_id = #{ticket_id}
+	</update>
+	
+	<delete id="ticketDelete">
+		delete from ticket where ticket_id = #{ticket_id}
+	</delete>
+	
+	<select id="ticketRemain" resultType="int">
+		select sum(count)
+		from ticket
+		where member_id=#{member_id};
+	</select>
+	
+	
+	
+	<!-- 업자등록 -->
+	<insert id="sellerCreate">
+		insert into usedSeller(seller_name, seller_num, seller_phone, seller_address, seller_msg) 
+		values(#{seller_name}, #{seller_num}, #{seller_phone}, #{seller_address}, #{seller_msg})
+	</insert>
+	
+	<select id="sellerRead" resultType="int">
+		<![CDATA[
+		select count(seller_id) as RESULT
+		from usedSeller
+		where seller_name=#{seller_name}
+		]]>
+	</select>
+	
+	<select id="sellerList" resultType="com.vil.pjt.domain.UsedSellerVO">
+		select seller_id, seller_name, seller_num, seller_phone, seller_address, seller_msg
+		from usedSeller
+	</select>
+	
+
+	
 </mapper>

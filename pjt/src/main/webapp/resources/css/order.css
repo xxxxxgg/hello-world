@@ -1,0 +1,141 @@
+/*상단에 마이페이지*/
+#table-title {
+	color : #5f90a8;
+	text-align : center;
+}
+
+/*주문 제목*/
+#table-sub {
+	color : #23576d;
+	text-align : left;
+}
+
+/*마이페이지 카테고리*/
+#mypage-title {
+	color : #5f90a8;
+	text-align : center;
+}
+#mypage-sub-title {
+	display : inline-block;
+	width : 200px;
+	margin : 0px auto;
+	text-align : center;
+}
+a:link {
+	text-decoration: none; 
+	color: #5f90a8;
+}
+a:visited {
+	text-decoration: none; 
+	color: #5f90a8;
+}
+a:hover {
+	text-decoration: none; 
+	color: #5f90a8;
+	font-weight : bolder;
+}
+
+#register-form {
+	width : 1000px;
+	margin : 200px auto 50px auto;
+}
+
+
+
+table {
+	display : inline-block;
+	width : 950px;
+	margin : 0 auto;
+	background : #edf5f9;
+}
+
+table, th, td {
+	border-collapse : collapse;
+}
+
+td {
+	text-align : left;
+	padding : 0 10px;
+	width : 200px;
+}
+
+/*주문자정보 테이블 */
+#table_dev {
+	display : inline-block;
+	width : 950px;
+	height : 35px;
+	padding : 20px;
+	margin-bottom : 50px;
+	background : #edf5f9;
+	text-align : center;
+}
+
+#title {
+	width : 70px;
+	text-align : left;
+	font-weight : bold;	
+	padding : 5px;
+}
+
+.buyer {
+	border-right: 2px solid #abbfc9; 
+}	
+	
+
+/*상품 정보 테이블*/
+#tableTest {
+	padding : 20px;
+	margin-bottom : 50px;
+}
+
+
+/*배송지 정보 테이블*/
+.delivery {
+	width : 150px;
+	text-align : left;
+	font-weight : bold;	
+	padding : 5px;
+}
+td input[type="text"], input[type="password"], input[type="email"], input[type="raido"] , input[type="date"] { 
+	height: 20px;	
+}
+
+
+
+
+
+
+
+/*결제 수단 테이블 */
+.payment1 {
+	width : 150px;
+	padding : 5px;
+}
+#payment2 {
+	text-align : left;
+	font-weight : bold;	
+}
+
+
+#submit-button {
+	text-align : center;
+}
+button {
+	margin : 0 auto;
+	height : 40px;	
+	width : 100px;
+	
+	background : #4b778c;	
+	color:#fff;
+	border: none;
+	text-decoration: none;
+	font-size: 15px;
+	cursor: pointer;
+	border-radius:10px;
+}
+#gotohome {
+	text-decoration: none;
+}
+button:hover {
+	background : #5f90a8;
+}

@@ -1,5 +1,8 @@
 package com.vil.pjt.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.vil.pjt.domain.MemberVO;
+import com.vil.pjt.domain.TicketVO;
+import com.vil.pjt.domain.UsedSellerVO;
 import com.vil.pjt.dto.LoginDTO;
 import com.vil.pjt.persistence.MemberDAO;
 import com.vil.pjt.service.MemberService;
@@ -49,6 +54,8 @@ public class MemberController {
 		
 		return "redirect:/member/success";
 	}	
+	
+	
 	@RequestMapping(value="/checkUserID")
 	@ResponseBody
 	public int idCheck(String id) throws Exception {
@@ -57,6 +64,9 @@ public class MemberController {
 		int checkResult = service.selectMemberID(id);
 		return checkResult;
 	}
+	
+	
+	
 	@RequestMapping(value = "/success", method = RequestMethod.GET)
 	public void home(Model Model) throws Exception {
 		logger.info("회원가입 완료페이지를 보여줌");
@@ -158,5 +168,99 @@ public class MemberController {
 		logger.info("탈퇴완료 완료페이지를 보여줌");
 	}	
 	
+	
+	//이용권
+	@RequestMapping(value = "/mypageTicket", method = RequestMethod.GET)
+	public void mypageTicketGET( HttpSession session) throws Exception {
+		logger.info("이용권 화면을 보여준다.");	
+		Object obj = session.getAttribute("login"); 
+		MemberVO member = (MemberVO) obj;
+		
+		List<TicketVO> ticketList = new ArrayList<TicketVO>();
+		ticketList = dao.ticketRead(member.getId());
+	
+		session.setAttribute("ticketList", ticketList);
+	}
+	@RequestMapping(value = "/mypageTicket", method = RequestMethod.POST)
+	public String mypageTicketPOST(String ticket_type, HttpSession session) throws Exception {
+		
+		//티켓 VO 만들기
+		TicketVO ticket = new TicketVO();
+		
+		Object obj = session.getAttribute("login"); 
+		MemberVO member = (MemberVO) obj;
+		
+		ticket.setMember_id(member.getId());
+		
+		if (ticket_type.equals("gold")) {
+			ticket.setRental_type("gold");
+			ticket.setCount(5);
+		} 
+		else if (ticket_type.equals("silver")) {
+			ticket.setRental_type("silver");
+			ticket.setCount(3);
+		} 
+		else if (ticket_type.equals("bronze")) {
+			ticket.setRental_type("bronze");
+			ticket.setCount(1);
+		} 
+		
+		//티켓 VO DB에 넣기
+		dao.ticketCreate(ticket);
+		
+		List<TicketVO> ticketList = new ArrayList<TicketVO>();
+		ticketList = dao.ticketRead(member.getId());
+	
+		session.setAttribute("ticketList", ticketList);
+		
+		return "redirect:/member/mypageTicket";
+	}	
+	
+	
+	//중고업자 등록하기
+	@RequestMapping(value = "/usedSellerRegister", method = RequestMethod.GET)
+	public void usedSellerRegisterGET() throws Exception {
+		logger.info("중고업자등록 페이지를 보여준다.");	
+		
+	}	
+	
+	@RequestMapping(value = "/usedSellerRegister", method = RequestMethod.POST)
+	public String usedSellerRegisterPOST(HttpSession session, String id, String usedSellerNum, String usedSellerPhone, String usedSellerAddress, String usedSellerMsg) throws Exception {
+		
+		logger.info("실제로 중고업자등록하기");
+		
+		UsedSellerVO seller = new UsedSellerVO();
+		seller.setSeller_address(usedSellerAddress);
+		seller.setSeller_msg(usedSellerMsg);
+		seller.setSeller_name(id);
+		seller.setSeller_num(usedSellerNum);
+		seller.setSeller_phone(usedSellerPhone);
+		dao.sellerCreate(seller);	
+		
+		List<UsedSellerVO> sellerList = dao.sellerList();
+		session.setAttribute("sellerList", sellerList);
+
+		
+		return "/member/usedSeller";
+	}	
+	
+	@RequestMapping(value="/usedSellerCheck")
+	@ResponseBody
+	public int usedSellerCheck(String id) throws Exception {
+		System.out.println("중고업체 체크");   
+		System.out.println("스트링 아이디 : " + id);
+		int checkResult = dao.sellerRead(id);
+		System.out.println("체크결과 : " + checkResult);
+		return checkResult;
+	}
+	
+
+	@RequestMapping(value = "/usedSeller", method = RequestMethod.GET)
+	public void usedSeller(HttpSession session) throws Exception {
+		logger.info("제휴업체페이지");
+		
+		List<UsedSellerVO> sellerList = dao.sellerList();
+		session.setAttribute("sellerList", sellerList);
+	}	
 
 }

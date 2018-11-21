@@ -33,3 +33,15 @@ button:hover {
 	padding-top : 220px;
 	margin : 40px auto;
 }
+
+/*처음으로,주문내역*/
+#order {
+	display:inline-block;
+	width : 120px;
+	margin : 10px auto;
+	text-align : center;
+}
+#order1 {
+	text-align : center;
+}
+	

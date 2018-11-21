@@ -38,6 +38,7 @@
 	<!-- 인터셉터 -->
 	<beans:bean id="authInterceptor" class="com.vil.pjt.interceptor.AuthInterceptor"></beans:bean>
 	<beans:bean id="loginInterceptor" class="com.vil.pjt.interceptor.LoginInterceptor"></beans:bean>
+	<beans:bean id="ticketInterceptor" class="com.vil.pjt.interceptor.TicketInterceptor"></beans:bean>
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/loginPost" />
@@ -45,9 +46,14 @@
 		</interceptor>
 		<interceptor>
 			<mapping path="/member/mypage" />
+			<mapping path="/product/cart" />
 			<beans:ref bean="authInterceptor"/>
-    </interceptor>
-  </interceptors>
+    	</interceptor>
+    	<interceptor>
+			<mapping path="/product/noTicket" />
+			<beans:ref bean="ticketInterceptor"/>
+		</interceptor>
+  	</interceptors>
 
 	<!-- 관리자 로그인 설정 -->
 	<beans:bean id="adminLoginInterceptor" class="com.vil.pjt.interceptor.AdminLoginInterceptor"></beans:bean>
