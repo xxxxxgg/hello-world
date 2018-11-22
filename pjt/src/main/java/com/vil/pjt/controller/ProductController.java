@@ -4,19 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.vil.pjt.domain.CartVO;
+import com.vil.pjt.domain.Criteria;
 import com.vil.pjt.domain.MemberVO;
+import com.vil.pjt.domain.PageMaker;
 import com.vil.pjt.domain.ProRequestVO;
 import com.vil.pjt.domain.ProductVO;
 import com.vil.pjt.persistence.CartDAO;
@@ -33,7 +37,7 @@ public class ProductController {
 	@Inject
 	private CartDAO cartDao;
 	
-	//카테고리 페이지
+/*	//카테고리 페이지
 	@RequestMapping(value = "/cate1", method = RequestMethod.GET)
 	public void cete1GET(HttpSession session, Model model) throws Exception {
 		logger.info("카테고리1 페이지를 보여준다.");
@@ -41,7 +45,7 @@ public class ProductController {
 		session.setAttribute("list", dao.listAll());
 		List<ProductVO> list = dao.listAll();
 		System.out.println(list.toString());
-	}	
+	}	*/
 	
 	
 	
@@ -173,6 +177,66 @@ public class ProductController {
 	@RequestMapping(value = "/noTicket", method = RequestMethod.GET)
 	public void noTicketGET() throws Exception {
 		logger.info("노티켓 페이지를 보여줌");
+	}
+	
+	
+	
+	
+	@RequestMapping(value="/category", method={RequestMethod.GET, RequestMethod.POST})
+	public void category(@RequestParam("category") String category, @ModelAttribute("cri")Criteria cri, Model model) throws Exception{
+		String pageTitle;
+		//String sortTpye = httpServletRequest.getParameter("sortType");
+		int count;
+		pageTitle = category.replace("\"","");
+		count = dao.countCat(pageTitle);
+		model.addAttribute(dao.cat(category));
+		model.addAttribute("PageTitle", pageTitle);
+		model.addAttribute("catCount", count);
+		
+		
+		cri.setCategory(pageTitle);
+
+			
+		model.addAttribute("list", dao.catList(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		
+		pageMaker.setTotalCount(dao.countPaging(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		logger.info("test: " + cri.toString());
+
+		
+	}
+	
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String listPage(HttpServletRequest httpServletRequest, @ModelAttribute("cri")Criteria cri, Model model)throws Exception{
+		String keyword = httpServletRequest.getParameter("keyword");
+		int count;
+		
+		cri.setKeyword(keyword);
+		count = dao.SearchCount(cri);
+		
+		model.addAttribute("catCount", count);	//몇개 검색
+		
+		model.addAttribute("keyword", keyword);	//검색 키워드
+		
+		
+		model.addAttribute("list",dao.SearchList(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		
+		pageMaker.setTotalCount(dao.SearchCount(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		logger.info("test: " + cri.toString());
+		
+		return "product/list";
 	}
 	
 }

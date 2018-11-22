@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,45 +49,45 @@
 
         <div class="container">
             <div id="heading-block">
-                <h2>New Arrival</h2>
+                <h2>Category</h2>
             </div>
             <!-- first box -->
-            <a href="#">
+            <a href="/product/category?category=유아동">
                 <div class="catbox">
                     <img src="/resources/img/Children`s goods.jpg" alt="Children`s goods">
                     <span>유/아동</span>
                 </div>
             </a>
             <!-- second box -->
-            <a href="#">
+            <a href="/product/category?category=레저취미">
                 <div class="catbox">
                     <img src="/resources/img/LeisureHobby.jpg" alt="Leisure/Hobby">
                     <span>레져/취미</span>
                 </div>
             </a>
             <!-- third box -->
-            <a href="#">
+            <a href="/product/category?category=패션뷰티">
                 <div class="catbox">
                     <img src="/resources/img/FashionBeauty.jpg" alt="Fashion/Beauty">
                     <span>패션/뷰티</span>
                 </div>
             </a>
             <!-- fourth box -->
-            <a href="#">
+            <a href="/product/category?category=리빙">
                 <div class="catbox">
                     <img src="/resources/img/Living.jpg" alt="Living">
                     <span>리빙</span>
                 </div>
             </a>
             <!-- fifth box -->
-            <a href="#">
+            <a href="/product/category?category=반려동물">
                 <div class="catbox">
                     <img src="/resources/img/pet.jpg" alt="Pet">
-                    <span>애완동물</span>
+                    <span>반려동물</span>
                 </div>
             </a>
             <!-- sixth box -->
-            <a href="#">
+            <a href="/product/sell">
                 <div class="catbox">
                     <img src="/resources/img/Second-hand sales.jpg" alt="Second-hand sales">
                     <span>중고 판매관</span>
@@ -93,80 +95,24 @@
             </a>
             <!-- HEADING OF CATEGORY -->
             <div id="heading-block">
-                <h2>Products</h2>
+                <h2>New Arrivals</h2>
             </div>
             <div class="prod-container">
-                <!--First product-->
-                <div class="prod-box">
-                    <img src="/resources/img/Car-seat.jpg" alt="Car seat">
+            
+            	<c:forEach items="${list}" var="productVO">
+            		<div class="prod-box">
+            		<a href = "/product/detail?product_id=${productVO.product_id}">
+                    <img src="/resources/img/product/${productVO.mainimg}" width="100%"  height="100%" alt="Car seat">
                     <div class="prod-trans">
                     <div class="prod-feature">
-                        <p>제품명: 카시트</p>
-                        <p>가격: 10000원</p>
-                        <input type="button" value="장바구니 담기">
+                        <p>제품명: ${productVO.product_name}</p>
+                        <p>가격: ${productVO.priceforweek}</p>
                     </div>
                     </div>
+                    </a>
                 </div>
-                
-                <!--Second product-->
-                <div class="prod-box">
-                    <img src="/resources/img/Refrigirator.png" alt="Refrigirator">
-                    <div class="prod-trans">
-                    <div class="prod-feature">
-                        <p>제품명: 냉장고</p>
-                        <p>가격: 10000원</p>
-                        <input type="button" value="장바구니 담기">
-                    </div>
-                    </div>
-                </div>
-                
-                <!--Third product-->
-                <div class="prod-box">
-                    <img src="/resources/img/Childrenas-clothes.jpg" alt="Childrenas clothes">
-                    <div class="prod-trans">
-                    <div class="prod-feature">
-                        <p>제품명: 애기옷</p>
-                        <p>가격: 10000원</p>
-                        <input type="button" value="장바구니 담기">
-                    </div>
-                    </div>
-                </div>
+            	</c:forEach>
 
-                <!--Fourth product-->
-                <div class="prod-box">
-                    <img src="/resources/img/Pet's-bag.jpg" alt="Pet`s bag">
-                    <div class="prod-trans">
-                    <div class="prod-feature">
-                        <p>제품명: 애견가방</p>
-                        <p>가격: 10000원</p>
-                        <input type="button" value="장바구니 담기">
-                    </div>
-                    </div>
-                </div>
-
-                <!--Fifth product-->
-                <div class="prod-box">
-                    <img src="/resources/img/Running-machine.jpg" alt="Running machine">
-                    <div class="prod-trans">
-                    <div class="prod-feature">
-                        <p>제품명: 러닝머신</p>
-                        <p>가격: 10000원</p>
-                        <input type="button" value="장바구니 담기">
-                    </div>
-                    </div>
-                </div>
-
-                <!--Sixth product-->
-                <div class="prod-box">
-                    <img src="/resources/img/tv.jpg" alt="Television">
-                    <div class="prod-trans">
-                    <div class="prod-feature">
-                        <p>제품명: TV</p>
-                        <p>가격: 10000원</p>
-                        <input type="button" value="장바구니 담기">
-                    </div>
-                    </div>
-                </div>
 
             </div>
           </div><!-- container -->

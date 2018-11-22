@@ -10,7 +10,7 @@ html,body {
 	font-family: Malgun Gothic, "맑은 고딕" , Helvetica, Arial, sans-serif,"AppleGothic","Apple Gothic","Noto Serif","NotoSansKR","NotoSans","맑은 고딕","돋음", "Dotum", sans-serif;
 }
 
-.container {
+.header_container {
     width:95%;
     margin: 0 auto;
 }

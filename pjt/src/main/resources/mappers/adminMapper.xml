@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- admin order******************************************************************************************************* -->
 	<select id="adminOrderSelect" resultType="OrderVO">
 		select * 
-		from tb_order
+		from tb_order2
 		where no = #{no}
 	</select>
 	
@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="adminOrderList" resultType="OrderVO">
 		<![CDATA[
-			select * from tb_order
+			select * from tb_order2
 			where no > 0			
 		]]>
 		
@@ -47,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="adminOrderCount" resultType="int">
 		<![CDATA[
 			select count(*) 
-			from tb_order
+			from tb_order2
 			where no > 0
 		]]>
 		<include refid="adminOrderSearchPage"></include>
@@ -55,13 +55,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="adminOrderedItemSelect" resultType="OrderedItemVO">
 		<![CDATA[
-			select * from tb_ordereditem
+			select * from tb_ordereditem2
 			where order_no = #{orderNo}
 		]]>
 	</select>
 	<select id="adminOrderedItemList" resultType="OrderedItemVO">
 		<![CDATA[
-			select * from tb_ordereditem
+			select * from tb_ordereditem2
 			where order_no = #{orderNo}
 		]]>
 	</select>
@@ -110,14 +110,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 														TEST
 		@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 	<insert id="createBoardByBatch" parameterType="map">
-		INSERT INTO tb_order(state, mno, orderdate, comment, totalprice)
+		INSERT INTO tb_order2(state, mno, orderdate, comment, totalprice)
 			   VALUES
 			   <foreach item="board" index="index" collection="list" open="" separator="," close="">
 					(#{board.state}, #{board.mno}, NOW(), #{board.comment}, #{board.totalprice})
 			   </foreach>		
 	</insert>
 	<insert id="createBoardByBatch2" parameterType="map">
-		INSERT INTO tb_ordereditem(order_no, item_no, count, totalprice)
+		INSERT INTO tb_ordereditem2(order_no, item_no, count, totalprice)
 			   VALUES
 			   <foreach item="board" index="index" collection="list" open="" separator="," close="">
 					(#{board.orderNo}, #{board.itemNo}, #{board.count}, #{board.totalprice})

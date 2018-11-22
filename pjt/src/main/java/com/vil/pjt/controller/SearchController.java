@@ -3,6 +3,7 @@ package com.vil.pjt.controller;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.vil.pjt.service.SearchService;
+import com.vil.pjt.domain.Criteria;
+import com.vil.pjt.domain.PageMaker;
+import com.vil.pjt.persistence.ProductDAO;
 
 @Controller
 @RequestMapping("/")
@@ -22,10 +25,13 @@ public class SearchController {
 	//@Inject
 	//private SearchService service;
 	
+	@Inject
+	private ProductDAO dao;
+	
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String index(Locale locale) {
+	public String index(Locale locale, Model model) throws Exception{
 		logger.info("Welcome index! The client locale is {}.-----------------------------", locale);
-		
+		model.addAttribute("list", dao.mainImg());
 		return "index";
 	}
 	
@@ -34,5 +40,37 @@ public class SearchController {
 		logger.info(keyword);
 		model.addAttribute("keyword", keyword);
 		return "searchList";
+	}
+	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String listPage(HttpServletRequest httpServletRequest, @ModelAttribute("cri")Criteria cri, Model model)throws Exception{
+		String keyword = httpServletRequest.getParameter("keyword");
+		int count;
+		
+		cri.setKeyword(keyword);
+		count = dao.SearchCount(cri);
+		
+		model.addAttribute("catCount", count);	//몇개 검색
+		
+		model.addAttribute("keyword", keyword);	//검색 키워드
+		
+		
+		model.addAttribute("list",dao.SearchList(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		
+		pageMaker.setTotalCount(dao.SearchCount(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		logger.info("test: " + cri.toString());
+		
+		return "list";
+	}
+	
+	@RequestMapping("/map")
+	public String map(){
+		return "map";
 	}
 }

@@ -18,7 +18,7 @@
 	<div id="wrapper">
 		<header id="header">
 		<div id="subheader">
-			<nav class="container">
+			<nav class="header_container">
 				<!-- <p>The Village</p> -->
 				<a href="/member/usedSeller" class = "heaer_link">제휴업체</a>
 				<a href="/product/cart" class = "heaer_link">장바구니</a>
@@ -47,8 +47,8 @@
 			</div>
 			<!-- search area -->
 			<div id="search">
-				<form action="">
-					<input class="search-area" type="text" name="text" placeholder="원하는 상품을 검색하세요!">
+				<form action="list" method="get">
+					<input class="search-area" type="text" name="keyword" placeholder="원하는 상품을 검색하세요!">
 					<input class="search-btn" type="submit" name="submit" value="SEARCH">
 				</form>
 			</div>
@@ -58,11 +58,11 @@
 		<!-- navigation bar -->
 		<div id="navigation">
 			<nav>
-				<a href="/product/cate1">유아동</a><span id="gubun">|</span>
-				<a href="#">레저/취미</a><span id="gubun">|</span>
-				<a href="#">패션/뷰티</a><span id="gubun">|</span>
-				<a href="#">리빙</a><span id="gubun">|</span>
-				<a href="#">반려동물</a><span id="gubun">|</span>
+				<a href="/product/category?category=유아동">유아동</a><span id="gubun">|</span>
+				<a href="/product/category?category=레저취미">레저/취미</a><span id="gubun">|</span>
+				<a href="/product/category?category=패션뷰티">패션/뷰티</a><span id="gubun">|</span>
+				<a href="/product/category?category=리빙">리빙</a><span id="gubun">|</span>
+				<a href="/product/category?category=반려동물">반려동물</a><span id="gubun">|</span>
 				<a href="/product/sell">제품요청</a>
 			</nav>
 		</div>

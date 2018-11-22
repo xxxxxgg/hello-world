@@ -18,11 +18,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.vil.pjt.domain.Criteria;
 import com.vil.pjt.domain.MemberVO;
+import com.vil.pjt.domain.PageMaker;
 import com.vil.pjt.domain.TicketVO;
 import com.vil.pjt.domain.UsedSellerVO;
 import com.vil.pjt.dto.LoginDTO;
 import com.vil.pjt.persistence.MemberDAO;
+import com.vil.pjt.persistence.ProductDAO;
 import com.vil.pjt.service.MemberService;
 
 @Controller
@@ -37,6 +40,8 @@ public class MemberController {
 	@Inject
 	private MemberDAO dao;
 	
+	@Inject
+	private ProductDAO Pdao;
 	
 	//회원가입
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -261,6 +266,33 @@ public class MemberController {
 		
 		List<UsedSellerVO> sellerList = dao.sellerList();
 		session.setAttribute("sellerList", sellerList);
+	}	
+	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String listPage(HttpServletRequest httpServletRequest, @ModelAttribute("cri")Criteria cri, Model model)throws Exception{
+		String keyword = httpServletRequest.getParameter("keyword");
+		int count;
+		
+		cri.setKeyword(keyword);
+		count = Pdao.SearchCount(cri);
+		
+		model.addAttribute("catCount", count);	//몇개 검색
+		
+		model.addAttribute("keyword", keyword);	//검색 키워드
+		
+		
+		model.addAttribute("list",Pdao.SearchList(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		
+		pageMaker.setTotalCount(Pdao.SearchCount(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		logger.info("test: " + cri.toString());
+		
+		return "member/list";
 	}	
 
 }

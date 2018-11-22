@@ -91,8 +91,8 @@ window.onclick = function(event) {
 }
 
 $("#faqAddBtn").on("click", function() {
-	var title = $("#atitle").val();
-	var content = $("#acontent").val();
+	var title = $("#title").val();
+	var content = $("#content").val();
 	
 	$.ajax({
 		type : 'post',

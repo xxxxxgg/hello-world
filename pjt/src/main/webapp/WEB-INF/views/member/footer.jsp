@@ -23,7 +23,7 @@
 				<p>Copyright © 2018 The Village rental Co.,Ltd. All Rights Reserved.</p>
 					<a href="#">회사소개</a>
 					<a href="#">이용약관</a>
-					<a href="#">오시는길</a>
+					<a href="/map">오시는길</a>
 					<a href="/cscenter">고객센터</a>
 				</center>
 			</div>

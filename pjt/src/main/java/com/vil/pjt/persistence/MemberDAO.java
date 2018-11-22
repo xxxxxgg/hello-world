@@ -36,6 +36,7 @@ public interface MemberDAO {
 	public void ticketDelete(int ticket_id) throws Exception;				//만료된 티켓
 	public int ticketCount(String member_id) throws Exception;				//티켓 갯수(없는지 확인)
 	public int ticketRemain(String member_id) throws Exception;				//티켓 잔여횟수 
+
 	
 	
 	//중고업자연동

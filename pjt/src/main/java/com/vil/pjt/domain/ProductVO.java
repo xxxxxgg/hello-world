@@ -3,15 +3,32 @@ package com.vil.pjt.domain;
 public class ProductVO {
 	
 	private Integer product_id;
+	
 	private String product_name;
+	
 	private String category;
+	
 	private Integer priceforweek;
+	
 	private Integer priceformonth;
+	
 	private Integer pricefornew;
+	
 	private String mainimg;
+	
 	private String detailimg;
 	
 	private String msg;
+	
+	private Integer stock;
+
+	public Integer getStock() {
+		return stock;
+	}
+
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
 
 	public String getMsg() {
 		return msg;
@@ -89,8 +106,9 @@ public class ProductVO {
 	public String toString() {
 		return "ProductVO [product_id=" + product_id + ", product_name=" + product_name + ", category=" + category
 				+ ", priceforweek=" + priceforweek + ", priceformonth=" + priceformonth + ", pricefornew=" + pricefornew
-				+ ", mainimg=" + mainimg + ", detailimg=" + detailimg + "]";
+				+ ", mainimg=" + mainimg + ", detailimg=" + detailimg + ", msg=" + msg + ", stock=" + stock + "]";
 	}
+
 
 	
 }

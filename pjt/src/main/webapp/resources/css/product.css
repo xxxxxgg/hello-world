@@ -1,78 +1,351 @@
-/*상단에 마이페이지*/
-#table-title {
-	color : #5f90a8;
-	text-align : center;
+ 
+/* 
+  @media (max-width: 940px) {
+    .container {
+      flex-direction: column;
+      margin-top: 60px;
+    }
+   
+    .left-column,
+    .right-column {
+      width: 100%;
+    }
+   
+    .left-column img {
+      width: 300px;
+      right: 0;
+      top: -65px;
+      left: initial;
+    }
+  }
+   
+  @media (max-width: 535px) {
+    .left-column img {
+      width: 220px;
+      top: -85px;
+    }
+  } */
+
+  
+
+.nice-number {
+    display: inline-flex;
+    justify-content: stretch;
+  }
+  
+  .nice-number input {
+    vertical-align: middle;
+    -moz-appearance: textfield;
+    box-sizing: content-box;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .nice-number input::-webkit-inner-spin-button,
+  .nice-number input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  #search_list {
+      margin-left: 15%;
+      width: 70%;
+      height: 50px;
+      margin-top: 150px;
+      border-bottom: 1px solid #000000;
+  }
+
+  #search_list #detail_option{
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  #search_list #total_count{
+      float: left;
+  }
+
+  #search_list #select_option{
+      float: right;
+  }
+  
+
+  /* dropdown */
+  /* --- EASYDROPDOWN DEFAULT THEME --- */
+
+/* PREFIXED CSS */
+
+.dropdown,
+.dropdown div,
+.dropdown li,
+.dropdown div::after{
+	-webkit-transition: all 150ms ease-in-out;
+	-moz-transition: all 150ms ease-in-out;
+	-ms-transition: all 150ms ease-in-out;
+	transition: all 150ms ease-in-out;
 }
 
-#register-form {
-	width : 1000px;
-	margin : 200px auto 50px auto;
+.dropdown .selected::after,
+.dropdown.scrollable div::after{
+	-webkit-pointer-events: none;
+	-moz-pointer-events: none;
+	-ms-pointer-events: none;
+	pointer-events: none;
 }
 
+/* WRAPPER */
 
-/*표에서 첫번째 열*/
-#title {
-	background : #cde4f2;
-	text-align : center;
-}
+.dropdown{
+	position: relative;
+    width: 160px;
+    height: 30px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	background: #fff;
 
-table, th, td {
-	border-top: 2px dotted #abbfc9; 
-	border-collapse : collapse;
-}
-
-table {
-	width : 950px;
-	margin : 10px auto 20px auto;
-}
-
-td {
-	height : 35px;
-	margin : 10px;
-	padding : 5px;
-	text-align : center;
-}
-
-/*선택삭제*/
-#select_delete {
-	display : inline-block;
-	margin : 20px 0 0 25px ;
-	height : 40px;	
-	width : 80px;
+	border-radius: 3px;
 	
-	background : #c0c0c0;	
-	color:#fff;
-	border: none;
-	text-decoration: none;
-	font-size: 15px;
-	cursor: pointer;
-}
-#gotohome {
-	text-decoration: none;
-}
-#select_delete:hover {
-	background : #abbfc9;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+    user-select: none;
+    float: right;
 }
 
-/*주문하기 버튼*/
-#submit-button {
-	display : inline-block;
-	width : 900px;
-	margin : 10px 50px;
-	text-align : center;
+.dropdown.open{
+	z-index: 2;
 }
-#order_btn {
-	margin : 0 auto;
-	height : 40px;	
-	width : 100px;
-	background : #4b778c;	
-	color:#fff;
-	border: none;
-	text-decoration: none;
-	font-size: 15px;
-	cursor: pointer;
-	border-radius:10px;
+
+.dropdown:hover{
+	box-shadow: 0 0 5px rgba(0,0,0,.15);
 }
-#order_btn:hover {
-	background : #5f90a8;
+
+.dropdown.focus{
+	box-shadow: 0 0 5px rgba(51,102,248,.4);
+}
+
+/* CARAT */
+
+.dropdown .carat{
+	position: absolute;
+	right: 12px;
+	top: 50%;
+	margin-top: -4px;
+	border: 6px solid transparent;
+	border-top: 8px solid #000;
+}
+
+.dropdown.open .carat{
+	margin-top: -10px;
+	border-top: 6px solid transparent;
+	border-bottom: 8px solid #000;
+}
+
+.dropdown.disabled .carat{
+	border-top-color: #999;
+}
+
+/* OLD SELECT (HIDDEN) */
+
+.dropdown .old{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 0;
+	width: 0;
+	overflow: hidden;
+}
+
+.dropdown select{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+.dropdown.touch .old{
+	width: 100%;
+	height: 100%;
+}
+
+.dropdown.touch select{
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+/* SELECTED FEEDBACK ITEM */ 
+
+.dropdown .selected,
+.dropdown li{
+	display: block;
+	font-size: 18px;
+	line-height: 1;
+	color: #000;
+	padding: 9px 12px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.dropdown.disabled .selected{
+	color: #999;
+}
+
+.dropdown .selected::after{
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 60px;
+	
+	border-radius: 0 2px 2px 0;
+	box-shadow: inset -55px 0 25px -20px #fff;
+}
+
+/* DROP DOWN WRAPPER */
+
+.dropdown div{
+	position: absolute;
+	height: 0;
+	left: -1px;
+	right: -1px;
+	top: 100%;
+	margin-top: -1px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-top: 1px solid #eee;
+	border-radius: 0 0 3px 3px;
+	overflow: hidden;
+	opacity: 0;
+}
+
+/* Height is adjusted by JS on open */
+
+.dropdown.open div{
+	opacity: 1;
+	z-index: 2;
+}
+
+/* FADE OVERLAY FOR SCROLLING LISTS */
+
+.dropdown.scrollable div::after{
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 50px;
+	
+	box-shadow: inset 0 -50px 30px -35px #fff;
+}
+
+.dropdown.scrollable.bottom div::after{
+	opacity: 0;
+}
+
+/* DROP DOWN LIST */
+
+.dropdown ul{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	list-style: none;
+	overflow: hidden;
+}
+
+.dropdown.scrollable.open ul{
+	overflow-y: auto;
+}
+
+/* DROP DOWN LIST ITEMS */
+
+.dropdown li{
+	list-style: none;
+	padding: 8px 12px;
+}
+
+/* .focus class is also added on hover */
+
+.dropdown li.focus{
+	background: #d24a67;
+	position: relative;
+	z-index: 3;
+	color: #fff;
+}
+
+.dropdown li.active{
+	font-weight: 700;
+}
+
+.container{
+    padding-top: 50px;
+}
+hr{
+    width: 300px;
+    border: 3px solid #434444;
+}
+
+.product-grid{
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.product-grid:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.image{
+    position: relative;
+}
+
+.btn{
+    background-color: transparent;
+    color: #434444;
+    border-radius: 0;
+    border: 1px solid #434444;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn:hover{
+    background-color: #434444;
+    color: #fff;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(67, 68, 68, 0.7);
+}
+
+.image:hover .overlay{
+    opacity: 1;
+}
+
+.detail{
+    color:#fff;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.col-md-3 h4{
+    margin-top: 20px;
+}
+
+.col-md-3 h5{
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: -15px;
+    color: red;
+
 }
