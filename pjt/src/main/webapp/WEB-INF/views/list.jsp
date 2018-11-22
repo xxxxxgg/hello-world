@@ -26,12 +26,10 @@
 		<div id="detail_option">
 				<span id="total_count">총 ${catCount}개의 상품이 검색되었습니다.</span>
 
-				<select class="dropdown" tabindex="5" data-settings='{"wrapperClass":"<a href="https://www.jqueryscript.net/tags.php?/metro/">metro</a>"}'>
-						<option value="latest">최신순</option>
-								<option value="popular" selected="selected">인기상품순</option>
-								<option value="evaluation">상품평순</option>
-								<option value="highprice">높은가격순</option>
-								<option value="lowprice">낮은가격순</option>
+				<select class="dropdown" tabindex="3" data-settings='{"wrapperClass":"<a href="https://www.jqueryscript.net/tags.php?/metro/">metro</a>"}'>
+						<option value="latest" selected="selected">최신순</option>
+						<option value="highprice">높은가격순</option>
+						<option value="lowprice">낮은가격순</option>
 				</select>
 
 		</div>
@@ -60,25 +58,25 @@
                 </div>
             </div>
             
-		<%-- <div class = "text-center">
+        <div class = "text-center">
 		<ul class = "pagination">
 			<c:if test = "${pageMaker.prev}">
-			<li><a href="category${pageMaker.makeSearch(pageMaker.startPage - 1)}">&laquo;</a></li>
+			<li><a href="list?keyword=${keyword}&page=${pageMaker.startPage - 1}">&laquo;</a></li>
 			</c:if>
 			
 			<c:forEach begin = "${pageMaker.startPage }"
 			end="${pageMaker.endPage }" var = "idx">
 			<li
 				<c:out value = "${pageMaker.cri.page == idx?'class =active':''}"/>>
-				<a href="category${pageMaker.makeSearch(idx)}">${idx}</a>
+				<a href="list?keyword=${keyword}&page=${idx}">${idx}</a>
 			</li>
 			</c:forEach>
 			
 			<c:if test = "${pageMaker.next && pageMaker.endPage > 0}">
-			<li><a href="category${pageMaker.makeSearch(pageMaker.endPage +1)}">&raquo;</a></li>
+			<li><a href="list?keyword=${keyword}&page=${pageMaker.endPage + 1 }">&raquo;</a></li>
 			</c:if>
 		</ul>
-		</div> --%>
+		</div>
 
             
 

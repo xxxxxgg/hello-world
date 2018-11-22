@@ -89,13 +89,13 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public int SearchCount(String keyword) throws Exception {
-		return session.selectOne(namespace + ".SearchCtn", keyword);
+	public int SearchCount(Criteria cri) throws Exception {
+		return session.selectOne(namespace + ".SearchCtn", cri);
 	}
 
 	@Override
-	public List<ProductVO> SearchList(String keyword) throws Exception {
-		return session.selectList(namespace + ".SearchList", keyword);
+	public List<ProductVO> SearchList(Criteria cri) throws Exception {
+		return session.selectList(namespace + ".SearchList", cri);
 	}
 
 //	@Override

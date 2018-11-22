@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.vil.pjt.domain.Criteria;
+import com.vil.pjt.domain.PageMaker;
 import com.vil.pjt.persistence.ProductDAO;
 import com.vil.pjt.service.SearchService;
 
@@ -41,15 +43,34 @@ public class SearchController {
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String listPage(HttpServletRequest httpServletRequest, Model model)throws Exception{
+	public String listPage(HttpServletRequest httpServletRequest, @ModelAttribute("cri")Criteria cri, Model model)throws Exception{
 		String keyword = httpServletRequest.getParameter("keyword");
 		int count;
-		count = dao.SearchCount(keyword);
-		model.addAttribute("catCount", count);
-
-		model.addAttribute("keyword", keyword);
-		model.addAttribute("list",dao.SearchList(keyword));
 		
-		return "product/list";
+		cri.setKeyword(keyword);
+		count = dao.SearchCount(cri);
+		
+		model.addAttribute("catCount", count);	//몇개 검색
+		
+		model.addAttribute("keyword", keyword);	//검색 키워드
+		
+		
+		model.addAttribute("list",dao.SearchList(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		
+		pageMaker.setTotalCount(dao.SearchCount(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		logger.info("test: " + cri.toString());
+		
+		return "list";
+	}
+	
+	@RequestMapping("/map")
+	public String map(){
+		return "map";
 	}
 }

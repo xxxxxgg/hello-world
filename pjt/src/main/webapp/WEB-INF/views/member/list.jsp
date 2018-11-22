@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title><c:out value="${PageTitle}"/></title>
+    <title>상품 검색 결과</title>
   	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -14,11 +14,9 @@
     
     <link href="/resources/css/product.css" rel="stylesheet" type="text/css">  
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
-    
-    
 </head>
 <body>
-	<jsp:include page="../member/header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	
 	<form role = "form" method = "post">
 		<input type = 'hidden' name = 'category' value="{productVO.category}">
@@ -27,11 +25,13 @@
 		<section id="search_list">
 		<div id="detail_option">
 				<span id="total_count">총 ${catCount}개의 상품이 검색되었습니다.</span>
-				<select class="dropdown" name="sortType" tabindex="3" data-settings='{"wrapperClass":"<a href="https://www.jqueryscript.net/tags.php?/metro/">metro</a>"}' onchange='this.form.submit()'>
-						<option value="latest">최신순</option>
+
+				<select class="dropdown" tabindex="3" data-settings='{"wrapperClass":"<a href="https://www.jqueryscript.net/tags.php?/metro/">metro</a>"}'>
+						<option value="latest" selected="selected">최신순</option>
 						<option value="highprice">높은가격순</option>
 						<option value="lowprice">낮은가격순</option>
 				</select>
+
 		</div>
 	</section>
 	
@@ -58,29 +58,30 @@
                 </div>
             </div>
             
-            
         <div class = "text-center">
 		<ul class = "pagination">
 			<c:if test = "${pageMaker.prev}">
-			<li><a href="category?category=${PageTitle}&page=${pageMaker.startPage - 1}">&laquo;</a></li>
+			<li><a href="list?keyword=${keyword}&page=${pageMaker.startPage - 1}">&laquo;</a></li>
 			</c:if>
 			
 			<c:forEach begin = "${pageMaker.startPage }"
 			end="${pageMaker.endPage }" var = "idx">
 			<li
 				<c:out value = "${pageMaker.cri.page == idx?'class =active':''}"/>>
-				<a href="category?category=${PageTitle}&page=${idx}">${idx}</a>
+				<a href="list?keyword=${keyword}&page=${idx}">${idx}</a>
 			</li>
 			</c:forEach>
 			
 			<c:if test = "${pageMaker.next && pageMaker.endPage > 0}">
-			<li><a href="category?category=${PageTitle}&page=${pageMaker.endPage + 1 }">&raquo;</a></li>
+			<li><a href="list?keyword=${keyword}&page=${pageMaker.endPage + 1 }">&raquo;</a></li>
 			</c:if>
 		</ul>
-		</div>         
+		</div>
+
+            
 
        
        
-	<jsp:include page="../member/footer.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

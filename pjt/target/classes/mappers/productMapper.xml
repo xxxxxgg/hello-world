@@ -29,13 +29,13 @@
 	
 	<select id="listPage" resultType="ProductVO">
 		<![CDATA[
-			select * from product where product_id > 0 order by product_id asc limit #{page}, 16
+			select * from product where product_id > 0 order by product_id desc limit #{page}, 16
 		]]>
 	</select>
 	
 	<select id="listCriteria" resultType="ProductVO">
 		<![CDATA[
-			select * from product where product_id > 0 order by product_id asc limit #{pageStart}, #{perPageNum}
+			select * from product where product_id > 0 order by product_id desc limit #{pageStart}, #{perPageNum}
 		]]>
 	</select>
 	
@@ -51,13 +51,13 @@
 	
 	<select id="SelCatList" resultType="ProductVO">
 		<![CDATA[
-			select * from product where category=#{category} order by product_id asc limit #{pageStart}, #{perPageNum}
+			select * from product where category=#{category} order by product_id desc limit #{pageStart}, #{perPageNum}
 		]]>
 	</select>
 	
 	<select id="listSearch" resultType="ProductVO">
 		<![CDATA[
-			select * from product where product_id > 0 and product_name like #{keyword} order by product_id asc limit #{pageStart}, #{perPageNum}
+			select * from product where product_id > 0 and product_name like #{keyword} order by product_id desc limit #{pageStart}, #{perPageNum}
 		]]>
 	</select>
 	
@@ -76,7 +76,7 @@
 		
 		<select id="SearchList" resultType="ProductVO">
 			<![CDATA[
-			select * from product where product_id > 0 and product_name like #{keyword}
+			select * from product where product_id > 0 and product_name like #{keyword} order by product_id desc limit #{pageStart}, #{perPageNum}
 		]]>
 		
 		</select>

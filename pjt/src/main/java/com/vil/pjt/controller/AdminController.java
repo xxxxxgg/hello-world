@@ -3,6 +3,7 @@ package com.vil.pjt.controller;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.vil.pjt.domain.AdminVO;
+import com.vil.pjt.domain.Criteria;
 import com.vil.pjt.dto.AdminLoginDTO;
+import com.vil.pjt.persistence.ProductDAO;
 import com.vil.pjt.service.AdminService;
 import com.vli.pjt.framework.paging.PageMaker;
 import com.vli.pjt.framework.paging.SearchCriteria;
@@ -24,6 +27,9 @@ import com.vli.pjt.framework.paging.SearchCriteria;
 public class AdminController {
 	@Inject
 	private AdminService service;
+	
+	@Inject
+	private ProductDAO dao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	
@@ -102,4 +108,5 @@ public class AdminController {
 		
 		return "/admin/adminMember";
 	}
+	
 }

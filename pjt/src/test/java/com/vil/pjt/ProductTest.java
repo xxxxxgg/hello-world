@@ -131,8 +131,17 @@ public class ProductTest {
 					
 		@Test
 		public void countlist() throws Exception{
-			String keyword = "유모차";
-			logger.info("count: " + dao.SearchCount(keyword));
+			Criteria cri = new Criteria();
+			cri.setKeyword("유모차");
+			cri.setPage(1);
+			cri.setPerPageNum(16);
+			
+			List<ProductVO> list = dao.SearchList(cri);
+			
+			for(ProductVO productVO : list){
+				logger.info(productVO.getProduct_id() + ":" + productVO.getProduct_name());
+			}
+			
 		}
 
 }

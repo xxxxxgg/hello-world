@@ -5,6 +5,8 @@ public class Criteria {
 	private int perPageNum;
 	
 	private String category;
+	private String keyword;
+	private String sortType;
 	
 	public Criteria() {
 		this.page = 1;
@@ -52,11 +54,34 @@ public class Criteria {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	
+	
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	
+	
+	public String getSortType() {
+		return sortType;
+	}
+
+	public void setSortType(String sortType) {
+		this.sortType = sortType;
+	}
 
 	@Override
 	public String toString() {
-		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", category=" + category + "]";
+		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", category=" + category + ", keyword="
+				+ keyword + ", sortType=" + sortType + "]";
 	}
+
+	
+	
 
 //	@Override
 //	public String toString() {

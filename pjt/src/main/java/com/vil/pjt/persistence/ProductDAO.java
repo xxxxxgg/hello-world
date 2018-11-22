@@ -32,8 +32,8 @@ public interface ProductDAO {
 	
 	public int listSearchCount(SearchCriteria cri)throws Exception;
 	
-	public int SearchCount(String keyword)throws Exception;
+	public int SearchCount(Criteria cri)throws Exception;
 	
-	public List<ProductVO> SearchList(String keyword)throws Exception;
+	public List<ProductVO> SearchList(Criteria cri)throws Exception;
 	
 }
