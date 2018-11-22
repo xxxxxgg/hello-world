@@ -4,19 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.vil.pjt.domain.CartVO;
+import com.vil.pjt.domain.Criteria;
 import com.vil.pjt.domain.MemberVO;
+import com.vil.pjt.domain.PageMaker;
 import com.vil.pjt.domain.ProRequestVO;
 import com.vil.pjt.domain.ProductVO;
 import com.vil.pjt.persistence.CartDAO;
@@ -43,7 +47,53 @@ public class ProductController {
 		System.out.println(list.toString());
 	}	
 	
+	@RequestMapping(value="/category", method={RequestMethod.GET, RequestMethod.POST})
+	public void category(@RequestParam("category") String category, @ModelAttribute("cri")Criteria cri, Model model) throws Exception{
+		String pageTitle;
+		int count;
+		pageTitle = category.replace("\"","");
+		count = dao.countCat(pageTitle);
+		model.addAttribute(dao.cat(category));
+		model.addAttribute("PageTitle", pageTitle);
+		model.addAttribute("catCount", count);
+		//model.addAttribute("list", dao.cat(pageTitle));
+		/*logger.info("count: " + count);
+		logger.info("list" + dao.cat(pageTitle).toString());*/
+		
+		
+		if(pageTitle.contains("?")){
+			int index = pageTitle.indexOf("?");
+			String temp_pageTitle = pageTitle.substring(0, index);
+			cri.setCategory(temp_pageTitle);
+			logger.info("temp: " + temp_pageTitle);
+		}else{
+			cri.setCategory(pageTitle);
+		}
+		model.addAttribute("list", dao.catList(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		
+		pageMaker.setTotalCount(dao.countPaging(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		logger.info("test: " + cri.toString());
+		
+	}
 	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String listPage(HttpServletRequest httpServletRequest, @ModelAttribute("cri")Criteria cri, Model model)throws Exception{
+		String keyword = httpServletRequest.getParameter("keyword");
+		int count;
+		count = dao.SearchCount(keyword);
+		model.addAttribute("catCount", count);
+
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("list",dao.SearchList(keyword));
+		
+		return "product/list";
+	}
 	
 	//상품페이지
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
@@ -174,5 +224,37 @@ public class ProductController {
 	public void noTicketGET() throws Exception {
 		logger.info("노티켓 페이지를 보여줌");
 	}
+	/*
+	 * ****************************************************************************
+	 */
+	@RequestMapping(value = "/listCri", method = RequestMethod.GET)
+	public void listAll(Criteria cri, Model model) throws Exception{
+			logger.info("show list Page with Criteria........");
+			
+			cri.setCategory("반려동물");
+			int count = dao.countAll();
+			model.addAttribute("list", dao.listCriteria(cri));
+			model.addAttribute("count", count);
+	}
 	
+	@RequestMapping(value = "/listAll", method=RequestMethod.GET)
+	public void listAll(Model model)throws Exception{
+		logger.info("show all list........");
+		int count = dao.countAll();
+		model.addAttribute("list", dao.listAll());
+		model.addAttribute("count", count);
+	}
+	
+	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
+	public void listPage(@ModelAttribute("cri")Criteria cri, Model model)throws Exception{
+		logger.info(cri.toString());
+		
+		model.addAttribute("list", dao.listCriteria(cri));
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		
+		pageMaker.setTotalCount(dao.countPaging(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+	}
 }
