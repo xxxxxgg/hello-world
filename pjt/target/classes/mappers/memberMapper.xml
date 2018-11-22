@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vil.pjt.mapper.MemberMapper">
+	
+	<insert id="create">
+		insert into member(id, password, name, gender, mail, phone, address) 
+		values(#{id}, #{password}, #{name}, #{gender}, #{mail}, #{phone}, #{address})
+	</insert>
+	
+	<select id="selectMemberID" resultType="int">
+		<![CDATA[
+			select count(id) as RESULT
+			from member
+			where id=#{id}
+		]]>
+	</select>
+	
+	<select id="login" resultType="com.vil.pjt.domain.MemberVO">
+		select id, password, name, gender,  mail, phone, address
+		from member
+		where id=#{id} and password=#{password}
+	</select>
+	
+	<select id="update">
+		update member set password = #{password}, name = #{name}, gender = #{gender}, mail = #{mail}, phone = #{phone}, address = #{address}
+		where id = #{id}
+	</select>
+	
+	<delete id="delete">
+		delete from member where id = #{id}
+	</delete>
+	
+	
+	
+	<!-- 이용권 -->
+	<insert id="ticketCreate">
+		insert into ticket(member_id, rental_type, count) 
+		values(#{member_id}, #{rental_type}, #{count})
+	</insert>
+	
+	<select id="ticketRead" resultType="com.vil.pjt.domain.TicketVO">
+		select ticket_id, member_id, rental_type, count
+		from ticket
+		where member_id=#{member_id}
+	</select>
+	
+	<select id="ticketReadOne" resultType="com.vil.pjt.domain.TicketVO">
+		select ticket_id, member_id, rental_type, count
+		from ticket
+		where ticket_id=#{ticket_id}
+	</select>
+	
+	<select id="ticketCount" resultType="int">
+		select count(ticket_id)
+		from ticket
+		where member_id = #{member_id}
+	</select>
+	
+	<select id="ticketMin" resultType="int">
+		select min(ticket_id)
+		from ticket
+		where member_id=#{member_id}
+	</select>
+	
+	<update id="ticketEdit">
+		update ticket set count = #{count}
+		where ticket_id = #{ticket_id}
+	</update>
+	
+	<delete id="ticketDelete">
+		delete from ticket where ticket_id = #{ticket_id}
+	</delete>
+	
+	<select id="ticketRemain" resultType="int">
+		select sum(count)
+		from ticket
+		where member_id=#{member_id};
+	</select>
+	
+	
+	
+	<!-- 업자등록 -->
+	<insert id="sellerCreate">
+		insert into usedSeller(seller_name, seller_num, seller_phone, seller_address, seller_msg) 
+		values(#{seller_name}, #{seller_num}, #{seller_phone}, #{seller_address}, #{seller_msg})
+	</insert>
+	
+	<select id="sellerRead" resultType="int">
+		<![CDATA[
+		select count(seller_id) as RESULT
+		from usedSeller
+		where seller_name=#{seller_name}
+		]]>
+	</select>
+	
+	<select id="sellerList" resultType="com.vil.pjt.domain.UsedSellerVO">
+		select seller_id, seller_name, seller_num, seller_phone, seller_address, seller_msg
+		from usedSeller
+	</select>
+	
+
+	
+</mapper>

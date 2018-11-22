@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vil.pjt.mappers.csMapper">
+	<sql id="BoardPerPageBySearch">
+		<if test="searchType != null">
+			<if test="searchType == 'TITLE'.toString()">
+				and title like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'CONTENT'.toString()">
+				and content like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'WRITER'.toString()">
+				and writer like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'TITLE_CONTENT'.toString()">
+				and (title like CONCAT('%', #{keyword}, '%') 
+					or content like CONCAT('%', #{keyword}, '%'))
+			</if>
+			<if test="searchType == 'CONTENT_WRITER'.toString()">
+				and (content like CONCAT('%', #{keyword}, '%') 
+					or writer like CONCAT('%', #{keyword}, '%'))
+			</if>
+			<if test="searchType == 'TITLE_CONTENT_WRITER'.toString()">
+				and (title like CONCAT('%', #{keyword}, '%') 
+					or content like CONCAT('%', #{keyword}, '%')
+					or writer like CONCAT('%', #{keyword}, '%'))
+			</if>
+		</if>
+	</sql>
+	<sql id="FaqSearchPage">
+		<if test="keyword != null">
+			and title like CONCAT('%', #{keyword}, '%')
+		</if>
+	</sql>
+	
+	<select id="FaqList" resultType="FaqVO">
+		<![CDATA[
+			select * from tb_faq
+			where no > 0		
+		]]>
+		
+		<include refid="FaqSearchPage"></include>
+		
+		<![CDATA[			
+			order by no desc
+			limit #{pageStart}, #{pageSize}
+		]]>
+	</select>
+	<select id="FaqCount" resultType="int">
+		<![CDATA[
+			select count(*) 
+			from tb_faq
+			where no > 0
+		]]>
+		<include refid="FaqSearchPage"></include>
+	</select>
+	
+	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+														TEST
+		@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+	<insert id="createBoardByBatch" parameterType="map">
+		INSERT INTO tb_order(state, mno, orderdate, comment, totalprice)
+			   VALUES
+			   <foreach item="board" index="index" collection="list" open="" separator="," close="">
+					(#{board.state}, #{board.mno}, NOW(), #{board.comment}, #{board.totalprice})
+			   </foreach>		
+	</insert>
+	<insert id="createBoardByBatch2" parameterType="map">
+		INSERT INTO tb_ordereditem(order_no, item_no, count, totalprice)
+			   VALUES
+			   <foreach item="board" index="index" collection="list" open="" separator="," close="">
+					(#{board.orderNo}, #{board.itemNo}, #{board.count}, #{board.totalprice})
+			   </foreach>		
+	</insert>
+</mapper>
